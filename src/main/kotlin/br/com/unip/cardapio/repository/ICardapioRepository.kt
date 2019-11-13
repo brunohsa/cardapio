@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository
 
 interface ICardapioRepository : MongoRepository<Cardapio, String> {
 
-    fun findByUuidFornecedor(uuidFornecedor: String): List<Cardapio>
+    fun findByUuidFornecedor(uuidFornecedor: String): Cardapio?
 }
