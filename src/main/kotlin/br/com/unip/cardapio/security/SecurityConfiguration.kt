@@ -16,7 +16,7 @@ class SecurityConfiguration(val tokenUtil: TokenUtil) :
         WebSecurityConfigurerAdapter() {
 
     override fun configure(web: WebSecurity?) {
-        web!!.ignoring().antMatchers("/autenticar", "/autenticar/**", "/usuarios/**")
+        web!!.ignoring().antMatchers("/v1/produtos/*/imagem/download")
     }
 
     @Throws(Exception::class)

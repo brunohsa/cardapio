@@ -36,6 +36,12 @@ class CardapioWS(val cardapioService: ICardapioService) {
         return ResponseEntity.ok(response)
     }
 
+    @RequestMapping(value = ["/{id_cardapio}/produto/{id_produto}"], method = [RequestMethod.DELETE])
+    fun removerProduto(@PathVariable(value = "id_cardapio") idCardapio: String?,
+                       @PathVariable(value = "id_produto") idProduto: String?): ResponseEntity<Void> {
+        cardapioService.removerProduto(idCardapio, idProduto)
+        return ResponseEntity.ok().build()
+    }
 
     @RequestMapping(value = ["/buscar"], method = [RequestMethod.GET])
     fun buscarCardapio(): ResponseEntity<CardapioResponse> {

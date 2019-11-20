@@ -50,6 +50,19 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
         return map(cardapio)
     }
 
+    override fun removerProduto(idCardapio: String?, idProduto: String?) {
+        val cardapio = cardapioRepository.findById(idCardapio!!).orElseThrow { RuntimeException() }
+
+        val produtos = cardapio.produtos
+        val produto = produtos.find { p -> p.id != idProduto } ?: throw  RuntimeException()
+
+        val index = cardapio.produtos.indexOf(produto)
+        cardapio.produtos = produtos.drop(index + 1)
+
+        produtoService.remover(produto)
+        cardapioRepository.save(cardapio)
+    }
+
     override fun buscar(): CardapioDTO {
         val emailUsuario = AutenthicationUtil.getUsuarioLogado()
         val cadastro = autenticacaoService.buscarCadastroPorEmail(emailUsuario)

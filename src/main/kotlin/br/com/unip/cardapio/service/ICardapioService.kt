@@ -10,4 +10,6 @@ interface ICardapioService {
     fun adicionarProduto(idCardapio: String?, dto: ProdutoDTO): CardapioDTO
 
     fun buscar(): CardapioDTO
+
+    fun removerProduto(idCardapio: String?, idProduto: String?)
 }
