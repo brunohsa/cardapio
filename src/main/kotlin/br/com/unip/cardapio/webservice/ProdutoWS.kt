@@ -55,6 +55,6 @@ class ProdutoWS(val produtoService: IProdutoService) {
     fun getProduto(@PathVariable(value = "id_produto") idProduto: String?): ResponseEntity<ProdutoResponse> {
         var produto = produtoService.buscarProduto(idProduto)
         var response = ProdutoResponse(produto.id, produto.nome, produto.descricao, produto.valor, produto.categoria)
-        return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM).body(response)
+        return ResponseEntity.ok(response)
     }
 }

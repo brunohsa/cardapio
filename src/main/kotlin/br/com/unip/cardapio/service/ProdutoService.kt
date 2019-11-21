@@ -112,6 +112,12 @@ class ProdutoService(val produtoRepository: IProdutoRepository) : IProdutoServic
             throw CampoObrigatorioException("Id do produto é obrigatório.", ECodigoErro.CAD019)
         }
         val produto = produtoRepository.findById(id).orElseThrow { ProdutoNaoEncontradoException() }
-        return ProdutoDTO(produto.id, produto.descricao, produto.valor.toString(), produto.categoria.toString(), produto.urlImagem)
+        return ProdutoDTO(produto.id,
+                produto.nome,
+                produto.descricao,
+                produto.valor.toString(),
+                produto.categoria.toString(),
+                produto.urlImagem
+        )
     }
 }

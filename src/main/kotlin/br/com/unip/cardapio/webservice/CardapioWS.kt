@@ -5,7 +5,9 @@ import br.com.unip.cardapio.dto.ProdutoDTO
 import br.com.unip.cardapio.service.ICardapioService
 import br.com.unip.cardapio.webservice.model.request.CardapioRequest
 import br.com.unip.cardapio.webservice.model.request.ProdutoRequest
+import br.com.unip.cardapio.webservice.model.response.CardapioCriadoResponse
 import br.com.unip.cardapio.webservice.model.response.CardapioResponse
+import br.com.unip.cardapio.webservice.model.response.InfoCardapioResponse
 import br.com.unip.cardapio.webservice.model.response.ProdutoResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
@@ -19,11 +21,10 @@ import org.springframework.web.bind.annotation.RestController
 class CardapioWS(val cardapioService: ICardapioService) {
 
     @RequestMapping(value = ["/criar"], method = [RequestMethod.POST])
-    fun criarCardapio(@RequestBody request: CardapioRequest): ResponseEntity<String> {
+    fun criarCardapio(@RequestBody request: CardapioRequest): ResponseEntity<CardapioCriadoResponse> {
         val dto = CardapioDTO(request.nome)
         val id = cardapioService.criar(dto)
-
-        return ResponseEntity.ok(id)
+        return ResponseEntity.ok(CardapioCriadoResponse((id)))
     }
 
     @RequestMapping(value = ["/{id_cardapio}/adicionar-produto"], method = [RequestMethod.PUT])
@@ -53,7 +54,8 @@ class CardapioWS(val cardapioService: ICardapioService) {
 
     private fun map(cardapioDTO: CardapioDTO): CardapioResponse {
         var produtosResponse = this.map(cardapioDTO.produtos!!)
-        return CardapioResponse(cardapioDTO.id, cardapioDTO.nome, produtosResponse)
+        val infoCardapio = InfoCardapioResponse(cardapioDTO.id, cardapioDTO.nome)
+        return CardapioResponse(infoCardapio, produtosResponse)
     }
 
     private fun map(produtosDTO: List<ProdutoDTO>): List<ProdutoResponse> {

@@ -3,6 +3,7 @@ package br.com.unip.cardapio.service
 import br.com.unip.cardapio.domain.CardapioDomain
 import br.com.unip.cardapio.dto.CardapioDTO
 import br.com.unip.cardapio.dto.ProdutoDTO
+import br.com.unip.cardapio.exception.FornecedorNaoPossuiCardapioException
 import br.com.unip.cardapio.exception.FornecedorPossuiCardapioException
 import br.com.unip.cardapio.repository.ICardapioRepository
 import br.com.unip.cardapio.repository.entity.Cardapio
@@ -67,8 +68,8 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
         val emailUsuario = AutenthicationUtil.getUsuarioLogado()
         val cadastro = autenticacaoService.buscarCadastroPorEmail(emailUsuario)
 
-        val cardapio = cardapioRepository.findByUuidFornecedor(cadastro.uuid)
-        return map(cardapio!!)
+        val cardapio = cardapioRepository.findByUuidFornecedor(cadastro.uuid) ?: throw FornecedorNaoPossuiCardapioException()
+        return map(cardapio)
     }
 
     private fun map(cardapio: Cardapio): CardapioDTO {
