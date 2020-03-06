@@ -3,7 +3,7 @@ package br.com.unip.cardapio.exception
 import org.springframework.http.HttpStatus
 import java.lang.RuntimeException
 
-open class CadastroException : RuntimeException {
+open class CardapioBaseException : RuntimeException {
 
     var codigoErro: ECodigoErro
 
@@ -11,13 +11,6 @@ open class CadastroException : RuntimeException {
 
     constructor(codigoErro: ECodigoErro,
                 httpStatus: HttpStatus) {
-        this.codigoErro = codigoErro
-        this.httpStatus = httpStatus
-    }
-
-    constructor(codigoErro: ECodigoErro,
-                httpStatus: HttpStatus,
-                message: String) : super(message) {
         this.codigoErro = codigoErro
         this.httpStatus = httpStatus
     }

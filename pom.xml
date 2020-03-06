@@ -23,10 +23,6 @@
         <jaxb.version>2.3.0</jaxb.version>
         <liquibase.version>3.5.3</liquibase.version>
         <change.log.file>db.master.xml</change.log.file>
-
-        <liquibase.datasource.url>jdbc:mysql://localhost:3306/Autenticacao</liquibase.datasource.url>
-        <liquibase.datasource.username>root</liquibase.datasource.username>
-        <liquibase.datasource.password>1234</liquibase.datasource.password>
     </properties>
 
     <dependencies>

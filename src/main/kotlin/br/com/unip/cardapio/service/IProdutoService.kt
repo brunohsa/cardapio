@@ -10,7 +10,7 @@ interface IProdutoService {
 
     fun remover(produto: Produto)
 
-    fun editar(produtoId : String?, produto: ProdutoDTO)
+    fun alterar(id : String?, produtoDTO: ProdutoDTO) : Produto
 
     fun alterarImagem(cardapioId: String?, produtoId: String?, imagemBase64: String)
 

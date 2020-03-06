@@ -4,17 +4,17 @@ class CardapioDTO {
 
     var id: String? = ""
 
-    var nome: String? = ""
+    var titulo: String? = ""
 
     var produtos: List<ProdutoDTO>? = emptyList()
 
     constructor(nome: String?) {
-        this.nome = nome
+        this.titulo = nome
     }
 
-    constructor(id: String?, nome: String?, produtos: List<ProdutoDTO>?) {
+    constructor(id: String?, titulo: String?, produtos: List<ProdutoDTO>?) {
         this.id = id
-        this.nome = nome
+        this.titulo = titulo
         this.produtos = produtos
     }
 }

@@ -1,8 +1,9 @@
 package br.com.unip.cardapio.exception
 
-import org.springframework.http.HttpStatus
+import br.com.unip.cardapio.exception.ECodigoErro.PRODUTO_NAO_ENCONTRADO
+import org.springframework.http.HttpStatus.NOT_FOUND
 
-class ProdutoNaoEncontradoException : CadastroException {
+class ProdutoNaoEncontradoException : CardapioBaseException {
 
-    constructor() : super(ECodigoErro.CAD020, HttpStatus.NOT_FOUND, "Produto não encontrado.")
+    constructor() : super(PRODUTO_NAO_ENCONTRADO, NOT_FOUND)
 }

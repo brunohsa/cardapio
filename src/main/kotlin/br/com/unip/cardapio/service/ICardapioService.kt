@@ -7,9 +7,11 @@ interface ICardapioService {
 
     fun criar(dto: CardapioDTO): String
 
-    fun adicionarProduto(idCardapio: String?, dto: ProdutoDTO): CardapioDTO
+    fun adicionarProduto(idCardapio: String, dto: ProdutoDTO): CardapioDTO
 
-    fun buscar(): CardapioDTO
+    fun alterarProduto(idCardapio: String, idProduto: String, produtoDTO: ProdutoDTO)
+
+    fun buscar(): CardapioDTO?
 
     fun removerProduto(idCardapio: String?, idProduto: String?)
 }

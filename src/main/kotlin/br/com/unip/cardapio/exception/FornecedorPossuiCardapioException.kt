@@ -1,8 +1,9 @@
 package br.com.unip.cardapio.exception
 
-import org.springframework.http.HttpStatus
+import br.com.unip.cardapio.exception.ECodigoErro.POSSUI_CARDAPIO_CADASTRADO
+import org.springframework.http.HttpStatus.BAD_REQUEST
 
-class FornecedorPossuiCardapioException : CadastroException {
+class FornecedorPossuiCardapioException : CardapioBaseException {
 
-    constructor() : super(ECodigoErro.CAD018, HttpStatus.BAD_REQUEST, "Fornecedor já possui um cardápio cadastrado")
+    constructor() : super(POSSUI_CARDAPIO_CADASTRADO, BAD_REQUEST)
 }
