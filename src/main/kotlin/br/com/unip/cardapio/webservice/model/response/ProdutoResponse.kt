@@ -18,14 +18,10 @@ class ProdutoResponse {
     @JsonProperty(value = "valor")
     var valor: String?
 
-    @JsonProperty(value = "categoria")
-    var categoria: String?
-
-    constructor(id: String?, nome: String?, descricao: String?, valor: String?, categoria: String?) {
+    constructor(id: String?, nome: String?, descricao: String?, valor: String?) {
         this.id = id
         this.nome = nome
         this.descricao = descricao
         this.valor = valor
-        this.categoria = categoria
     }
 }

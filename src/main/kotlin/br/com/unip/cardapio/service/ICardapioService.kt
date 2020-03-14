@@ -1,17 +1,22 @@
 package br.com.unip.cardapio.service
 
 import br.com.unip.cardapio.dto.CardapioDTO
+import br.com.unip.cardapio.dto.CategoriaDTO
 import br.com.unip.cardapio.dto.ProdutoDTO
 
 interface ICardapioService {
 
     fun criar(dto: CardapioDTO): String
 
-    fun adicionarProduto(idCardapio: String, dto: ProdutoDTO): CardapioDTO
+    fun buscar(): CardapioDTO
 
-    fun alterarProduto(idCardapio: String, idProduto: String, produtoDTO: ProdutoDTO)
+    fun adicionarCategoria(dto: CategoriaDTO): CardapioDTO
 
-    fun buscar(): CardapioDTO?
+    fun removerCategoria(idCategoria: String)
 
-    fun removerProduto(idCardapio: String?, idProduto: String?)
+    fun adicionarProduto(idCategoria: String, produtoDTO: ProdutoDTO)
+
+    fun alterarProduto(idCategoria: String, idProduto: String, produtoDTO: ProdutoDTO)
+
+    fun removerProduto(idProduto: String, idCategoria: String)
 }

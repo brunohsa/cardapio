@@ -1,9 +1,10 @@
 package br.com.unip.cardapio.security
 
+import br.com.unip.cardapio.security.filter.AuthenticationFilter
 import br.com.unip.cardapio.security.filter.CorsFilterCustom
-import br.com.unip.cardapio.security.filter.JWTAuthenticationFilter
-import br.com.unip.cardapio.security.util.TokenUtil
+import org.springframework.context.MessageSource
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -12,11 +13,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfiguration(val tokenUtil: TokenUtil) :
-        WebSecurityConfigurerAdapter() {
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+class SecurityConfiguration(val messageSource: MessageSource) : WebSecurityConfigurerAdapter() {
 
-    override fun configure(web: WebSecurity?) {
-        web!!.ignoring().antMatchers("/v1/produtos/**")
+    override fun configure(web: WebSecurity) {
+        web.ignoring().antMatchers("/v1/produtos/**/imagem/download")
     }
 
     @Throws(Exception::class)
@@ -29,8 +30,6 @@ class SecurityConfiguration(val tokenUtil: TokenUtil) :
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(CorsFilterCustom(), UsernamePasswordAuthenticationFilter::class.java)
-
-        //filtra requisicoes de login
-        .addFilterBefore(JWTAuthenticationFilter(tokenUtil), UsernamePasswordAuthenticationFilter::class.java)
+                .addFilterBefore(AuthenticationFilter(messageSource), UsernamePasswordAuthenticationFilter::class.java)
     }
 }
