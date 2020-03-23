@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController
 class CardapioWS(val cardapioService: ICardapioService) {
 
     @PostMapping(value = ["/criar"])
-    //@PreAuthorize("hasAuthority('$CRIAR_CARDAPIO')")
+    @PreAuthorize("hasAuthority('$CRIAR_CARDAPIO')")
     fun criarCardapio(@RequestBody request: CardapioRequest): ResponseEntity<CardapioCriadoResponse> {
         val dto = CardapioDTO(request.nome)
         val id = cardapioService.criar(dto)
@@ -39,14 +39,14 @@ class CardapioWS(val cardapioService: ICardapioService) {
     }
 
     @GetMapping(value = ["/buscar"])
-    //@PreAuthorize("hasAuthority('$BUSCAR_CARDAPIO')")
+    @PreAuthorize("hasAuthority('$BUSCAR_CARDAPIO')")
     fun buscarCardapio(): ResponseEntity<CardapioResponse> {
         val dto = cardapioService.buscar()
         return ResponseEntity.ok(this.map(dto))
     }
 
     @PutMapping(value = ["/adicionar-categoria"])
-    //@PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
+    @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
     fun adicionarCategoria(@RequestBody request: CategoriaRequest): ResponseEntity<CardapioResponse> {
         val categoria = CategoriaDTO(request.titulo)
         val cardapio = cardapioService.adicionarCategoria(categoria)
@@ -54,14 +54,14 @@ class CardapioWS(val cardapioService: ICardapioService) {
     }
 
     @DeleteMapping(value = ["/categoria/{id_categoria}"])
-    //@PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
+    @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
     fun removerCategoria(@PathVariable(value = "id_categoria") idCategoria: String): ResponseEntity<Void> {
         cardapioService.removerCategoria(idCategoria)
         return ResponseEntity.ok().build()
     }
 
     @PutMapping(value = ["/categoria/{id_categoria}/adicionar-produto"])
-   // @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
+    @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
     fun adicionarProduto(@PathVariable(value = "id_categoria") idCategoria: String,
                          @RequestBody request: ProdutoRequest): ResponseEntity<Void> {
         val produto = ProdutoDTO(request.nome, request.descricao, request.valor, request.imagem)
@@ -71,7 +71,7 @@ class CardapioWS(val cardapioService: ICardapioService) {
     }
 
     @PutMapping(value = ["/categoria/{id_categoria}/produto/{id_produto}/alterar"])
-   // @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
+    @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
     fun alterarProduto(@PathVariable(value = "id_categoria") idCategoria: String,
                        @PathVariable(value = "id_produto") idProduto: String,
                        @RequestBody request: ProdutoRequest): ResponseEntity<Void> {
@@ -82,7 +82,7 @@ class CardapioWS(val cardapioService: ICardapioService) {
     }
 
     @DeleteMapping(value = ["/categoria/{id_categoria}/produto/{id_produto}"])
-    //@PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
+    @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
     fun removerProduto(@PathVariable(value = "id_produto") idProduto: String,
                        @PathVariable(value = "id_categoria") idCategoria: String): ResponseEntity<Void> {
         cardapioService.removerProduto(idProduto, idCategoria)
