@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60785265-7743-4b00-8f7b-94500422d85a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cardapio.iml" beforeDir="false" />
-    </list>
+    <list default="true" id="60785265-7743-4b00-8f7b-94500422d85a" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,10 +47,6 @@
       <find>autenticacao.key</find>
       <find>Autenti</find>
       <find>/buscar</find>
-      <find>val cadastroUUID =getCadastroUUID()</find>
-      <find>produtoRepository.findById(id)</find>
-      <find>PATH_PASTA_BASE</find>
-      <find>013</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -72,35 +64,32 @@
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583858537237" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573690161106" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/domain" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RecentsManager">
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="br.com.unip.cardapio.webservice.model.response" />
-      <recent name="br.com.unip.cardapio.webservice" />
-      <recent name="br.com.unip.cardapio.service" />
-      <recent name="br.com.unip.cardapio.repository" />
+      <recent name="br.com.unip.cardapio.exception" />
       <recent name="br.com.unip.cardapio.webservice.model.request" />
+      <recent name="br.com.unip.cardapio.webservice" />
+      <recent name="br.com.unip.cardapio.dto" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="br.com.unip.cardapio.repository.entity" />
-      <recent name="br.com.unip.cardapio.repository.persistence" />
-      <recent name="br.com.unip.cardapio.security.util" />
       <recent name="br.com.unip.cardapio.domain.completo" />
       <recent name="br.com.unip.cardapio.domain.parcial" />
+      <recent name="br.com.unip.cardapio.domain" />
+      <recent name="br.com.unip.cardapio.domain.campos.parcial" />
+      <recent name="br.com.unip.cardapio.domain.campos.completo" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\workspace\cardapio" />
-      <recent name="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/response" />
+      <recent name="C:\workspace\cardapio\src\main\kotlin\br\com\unip\cardapio\dto" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security" />
       <recent name="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/exception" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -117,7 +106,7 @@
   </component>
   <component name="RunManager" selected="Kotlin.br.com.unip.cardapio.StartApplicationKt">
     <configuration name="All in cadastro" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cardapio" />
+      <module name="cadastro" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
@@ -125,7 +114,7 @@
       </method>
     </configuration>
     <configuration name="br.com.unip.cardapio.StartApplicationKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
-      <module name="cardapio" />
+      <module name="cadastro" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -193,9 +182,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/persistence/CascadeCallback.kt</url>
-          <line>17</line>
-          <option name="timeStamp" value="17" />
+          <url>file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/domain/campos/Descricao.kt</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/CardapioWS.kt</url>
+          <line>48</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -204,53 +197,20 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>Base64.getDecoder().decode(imagemBase64)</expression-string>
-        <language-id>kotlin</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>path</expression-string>
-        <language-id>kotlin</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>&quot;$PATH_PASTA_BASE/$cadastroUuid&quot;</expression-string>
-        <language-id>kotlin</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cadastroUuid</expression-string>
-        <language-id>kotlin</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>this.salvarImagem(imagemBase64)</expression-string>
-        <language-id>kotlin</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>Paths.get(produto.urlImagem)</expression-string>
-        <language-id>kotlin</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cardapioRepository.save(cardapio)</expression-string>
-        <language-id>kotlin</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>buscar(categoriaId, cardapioId)</expression-string>
-        <language-id>kotlin</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cardapioRepository.findByUuidFornecedor(getCadastroUUID())</expression-string>
-        <language-id>kotlin</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

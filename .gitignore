@@ -17,6 +17,7 @@
 
 .idea/codeStyles/Project.xml
 .idea/compiler.xml
+.idea/workspace.xml
 
 *.iml
 
