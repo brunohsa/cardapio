@@ -1,6 +1,7 @@
 package br.com.unip.cardapio.domain.campos
 
 import br.com.unip.cardapio.exception.ECodigoErro
+import br.com.unip.cardapio.exception.ECodigoErro.FORMATO_DATA_INVALIDO
 import br.com.unip.cardapio.exception.ParametroInvalidoException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -21,7 +22,7 @@ class Data : ICampo<LocalDate?> {
                 this.data = LocalDate.parse(data, format)
             }
         } catch (ex: DateTimeParseException) {
-            throw ParametroInvalidoException("Formato da data inválido.", ECodigoErro.CAD012)
+            throw ParametroInvalidoException(FORMATO_DATA_INVALIDO)
         }
     }
 

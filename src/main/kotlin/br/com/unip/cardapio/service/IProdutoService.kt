@@ -6,15 +6,15 @@ import org.springframework.core.io.InputStreamResource
 
 interface IProdutoService {
 
-    fun cadastrar(uuidFornecedor: String?, dto: ProdutoDTO): Produto
+    fun cadastrar(dto: ProdutoDTO, categoriaId: String): Produto
 
-    fun remover(produto: Produto)
+    fun remover(id: String, categoriaId: String)
 
-    fun editar(produtoId : String?, produto: ProdutoDTO)
+    fun alterar(id: String, categoriaId: String, produtoDTO: ProdutoDTO): Produto
 
-    fun alterarImagem(cardapioId: String?, produtoId: String?, imagemBase64: String)
+    fun alterarImagem(produtoId: String?, imagemBase64: String)
 
-    fun downloadImagem(produtoId: String?) : InputStreamResource
+    fun downloadImagem(produtoId: String?): InputStreamResource
 
-    fun buscarProduto(id: String?): ProdutoDTO
+    fun buscar(id: String?): ProdutoDTO
 }

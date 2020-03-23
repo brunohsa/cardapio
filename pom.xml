@@ -23,10 +23,6 @@
         <jaxb.version>2.3.0</jaxb.version>
         <liquibase.version>3.5.3</liquibase.version>
         <change.log.file>db.master.xml</change.log.file>
-
-        <liquibase.datasource.url>jdbc:mysql://localhost:3306/Autenticacao</liquibase.datasource.url>
-        <liquibase.datasource.username>root</liquibase.datasource.username>
-        <liquibase.datasource.password>1234</liquibase.datasource.password>
     </properties>
 
     <dependencies>
@@ -55,6 +51,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>${spring-boot-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.unip.cardapio</groupId>
+            <artifactId>autenticacao-lib</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

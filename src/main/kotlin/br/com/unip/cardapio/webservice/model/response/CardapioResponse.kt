@@ -6,14 +6,18 @@ import com.fasterxml.jackson.annotation.JsonProperty
 @JsonIgnoreProperties(ignoreUnknown = true)
 class CardapioResponse {
 
-    @JsonProperty(value = "cardapio")
-    val infoCardapio: InfoCardapioResponse
+    @JsonProperty(value = "id")
+    val id: String?
 
-    @JsonProperty(value = "produtos")
-    val produtos: List<ProdutoResponse>
+    @JsonProperty(value = "nome")
+    val nome: String?
 
-    constructor(infoCardapio: InfoCardapioResponse, produtos: List<ProdutoResponse>) {
-        this.infoCardapio = infoCardapio
-        this.produtos = produtos
+    @JsonProperty(value = "categorias")
+    val categorias: List<CategoriaResponse>
+
+    constructor(id: String?, nome: String?, categorias: List<CategoriaResponse>) {
+        this.id = id
+        this.nome = nome
+        this.categorias = categorias
     }
 }

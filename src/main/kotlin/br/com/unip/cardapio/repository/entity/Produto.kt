@@ -1,6 +1,5 @@
 package br.com.unip.cardapio.repository.entity
 
-import br.com.unip.cardapio.repository.entity.enums.ECategoriaProduto
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.math.BigDecimal
@@ -17,17 +16,17 @@ class Produto {
 
     var valor: BigDecimal? = null
 
-    var categoria: ECategoriaProduto? = null
-
     var urlImagem: String? = null
+
+    var categoriaId: String? = null
 
     constructor()
 
-    constructor(nome: String?, descricao: String?, valor: BigDecimal?, categoria: ECategoriaProduto?, urlImagem: String?) {
+    constructor(nome: String?, descricao: String?, valor: BigDecimal?, urlImagem: String?, categoriaId: String?) {
         this.nome = nome
         this.descricao = descricao
         this.valor = valor
-        this.categoria = categoria
         this.urlImagem = urlImagem
+        this.categoriaId = categoriaId
     }
 }

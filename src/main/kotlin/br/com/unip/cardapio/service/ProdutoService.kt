@@ -1,84 +1,82 @@
 package br.com.unip.cardapio.service
 
+import br.com.unip.autenticacaolib.util.AuthenticationUtil
 import br.com.unip.cardapio.domain.ProdutoDomain
 import br.com.unip.cardapio.dto.ProdutoDTO
 import br.com.unip.cardapio.exception.CampoObrigatorioException
-import br.com.unip.cardapio.exception.ECodigoErro
-import br.com.unip.cardapio.exception.ProdutoNaoEncontradoException
+import br.com.unip.cardapio.exception.ECodigoErro.ID_PRODUTO_OBRIGATORIO
+import br.com.unip.cardapio.exception.ECodigoErro.PRODUTO_NAO_ENCONTRADO
+import br.com.unip.cardapio.exception.NaoEncontradoException
 import br.com.unip.cardapio.repository.IProdutoRepository
 import br.com.unip.cardapio.repository.entity.Produto
-import br.com.unip.cardapio.repository.entity.enums.ECategoriaProduto
-import org.springframework.core.io.ClassPathResource
 import org.springframework.core.io.InputStreamResource
 import org.springframework.stereotype.Service
-import org.springframework.util.StreamUtils
 import java.io.File
 import java.io.FileInputStream
 import java.math.BigDecimal
 import java.nio.file.Files
 import java.nio.file.Paths
-import java.util.*
+import java.util.Base64
+import java.util.UUID
 
 @Service
 class ProdutoService(val produtoRepository: IProdutoRepository) : IProdutoService {
 
-    val PATH_PASTA_BASE: String = "/opt/imagens/"
+    val PATH_PASTA_BASE: String = "/opt/imagens"
 
-    override fun cadastrar(uuidFornecedor: String?, dto: ProdutoDTO): Produto {
-        val produtoDomain = ProdutoDomain(dto.nome, dto.descricao, dto.valor, dto.categoria, dto.imagem)
-        val absolutePath = this.salvarImagem(uuidFornecedor, produtoDomain.imagem.get())
-
-        val produto = Produto(produtoDomain.nome.get(),
-                produtoDomain.descricao.get(),
-                produtoDomain.valor.get(),
-                produtoDomain.categoria.get(),
-                absolutePath
+    override fun cadastrar(dto: ProdutoDTO, categoriaId: String): Produto {
+        val produtoDomain = ProdutoDomain(dto.nome, dto.descricao, dto.valor, dto.imagem)
+        val absolutePath = this.salvarImagem(produtoDomain.imagem.get())
+        val produto = Produto(
+                nome = produtoDomain.nome.get(),
+                descricao = produtoDomain.descricao.get(),
+                valor = produtoDomain.valor.get(),
+                urlImagem = absolutePath,
+                categoriaId = categoriaId
         )
-
         return produtoRepository.save(produto)
     }
 
-    override fun editar(produtoId: String?, dto: ProdutoDTO) {
-        if (produtoId == null) {
-            throw CampoObrigatorioException("Id do produto é obrigatório.", ECodigoErro.CAD019)
-        }
-        val produto = produtoRepository.findById(produtoId).orElseThrow { ProdutoNaoEncontradoException() }
-        if (!dto.categoria.isNullOrBlank()) {
-            produto.categoria = ECategoriaProduto.valueOf(dto.categoria!!)
-        }
-        if (!dto.descricao.isNullOrEmpty()) {
-            produto.descricao = dto.descricao
-        }
-        if (!dto.nome.isNullOrEmpty()) {
-            produto.nome = dto.nome
-        }
-        if (!dto.valor.isNullOrEmpty()) {
-            produto.valor = BigDecimal(dto.valor)
-        }
+    override fun alterar(id: String, categoriaId: String, produtoDTO: ProdutoDTO): Produto {
+        val produto = buscarProduto(id)
 
-        produtoRepository.save(produto)
+        if (!produtoDTO.descricao.isNullOrEmpty()) {
+            produto.descricao = produtoDTO.descricao
+        }
+        if (!produtoDTO.nome.isNullOrEmpty()) {
+            produto.nome = produtoDTO.nome
+        }
+        if (!produtoDTO.valor.isNullOrEmpty()) {
+            produto.valor = BigDecimal(produtoDTO.valor)
+        }
+        return produtoRepository.save(produto)
     }
 
-    override fun alterarImagem(cardapioId: String?, produtoId: String?, imagemBase64: String) {
-        if (produtoId == null) {
-            throw CampoObrigatorioException("Id do produto é obrigatório.", ECodigoErro.CAD019)
-        }
-        val produto = produtoRepository.findById(produtoId).orElseThrow { ProdutoNaoEncontradoException() }
-        //deleta arquivo antigo
-        Files.deleteIfExists(Paths.get(produto.urlImagem))
+    override fun alterarImagem(produtoId: String?, imagemBase64: String) {
+        val produto = buscarProduto(produtoId)
 
-        val imagemSalva = this.salvarImagem(cardapioId, imagemBase64)
+        //deleta arquivo antigo
+        if (!produto.urlImagem.isNullOrEmpty()) {
+            Files.deleteIfExists(Paths.get(produto.urlImagem))
+        }
+        val imagemSalva = this.salvarImagem(imagemBase64)
         produto.urlImagem = imagemSalva
 
         produtoRepository.save(produto)
     }
 
-    override fun remover(produto: Produto) {
+    override fun remover(id: String, categoriaId: String) {
+        val produto = buscarPorIdECategoriaId(id, categoriaId)
         produtoRepository.delete(produto)
     }
 
-    private fun salvarImagem(cardapioId: String?, imagemBase64: String): String {
-        val path = PATH_PASTA_BASE + cardapioId
+    private fun salvarImagem(imagemBase64: String?): String? {
+        if (imagemBase64.isNullOrEmpty()) {
+            return null
+        }
+        val cadastroUuid = AuthenticationUtil.getCadastroUUID()
+
+        val path = "$PATH_PASTA_BASE/$cadastroUuid"
         this.criarPasta(path)
 
         val imagem: ByteArray = Base64.getDecoder().decode(imagemBase64)
@@ -99,25 +97,26 @@ class ProdutoService(val produtoRepository: IProdutoRepository) : IProdutoServic
     }
 
     override fun downloadImagem(produtoId: String?): InputStreamResource {
-        if (produtoId == null) {
-            throw CampoObrigatorioException("Id do produto é obrigatório.", ECodigoErro.CAD019)
-        }
-        val produto = produtoRepository.findById(produtoId).orElseThrow { ProdutoNaoEncontradoException() }
+        val produto = buscarProduto(produtoId)
         val imagem = File(produto.urlImagem)
+
         return InputStreamResource(FileInputStream(imagem))
     }
 
-    override fun buscarProduto(id: String?): ProdutoDTO {
+    override fun buscar(id: String?): ProdutoDTO {
+        val produto = buscarProduto(id)
+        return ProdutoDTO(produto.id, produto.nome, produto.descricao, produto.valor.toString(), produto.urlImagem)
+    }
+
+    private fun buscarProduto(id: String?): Produto {
         if (id == null) {
-            throw CampoObrigatorioException("Id do produto é obrigatório.", ECodigoErro.CAD019)
+            throw CampoObrigatorioException(ID_PRODUTO_OBRIGATORIO)
         }
-        val produto = produtoRepository.findById(id).orElseThrow { ProdutoNaoEncontradoException() }
-        return ProdutoDTO(produto.id,
-                produto.nome,
-                produto.descricao,
-                produto.valor.toString(),
-                produto.categoria.toString(),
-                produto.urlImagem
-        )
+        return produtoRepository.findById(id).orElseThrow { NaoEncontradoException(PRODUTO_NAO_ENCONTRADO) }
+    }
+
+    private fun buscarPorIdECategoriaId(id: String, categoriaId: String): Produto {
+        return produtoRepository.findByIdAndCategoriaId(id, categoriaId)
+                .orElseThrow { NaoEncontradoException(PRODUTO_NAO_ENCONTRADO) }
     }
 }
