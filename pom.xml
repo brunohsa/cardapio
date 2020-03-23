@@ -182,41 +182,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <changeLogFile>src/main/resources/db/${change.log.file}</changeLogFile>
-                    <driver>com.mysql.jdbc.Driver</driver>
-                    <url>${liquibase.datasource.url}</url>
-                    <username>${liquibase.datasource.username}</username>
-                    <password>${liquibase.datasource.password}</password>
-                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>${mysql-connector}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>javax.xml.bind</groupId>
-                        <artifactId>jaxb-api</artifactId>
-                        <version>${jaxb.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.sun.xml.bind</groupId>
-                        <artifactId>jaxb-core</artifactId>
-                        <version>${jaxb.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.sun.xml.bind</groupId>
-                        <artifactId>jaxb-impl</artifactId>
-                        <version>${jaxb.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -231,9 +196,6 @@
             <id>local</id>
             <properties>
                 <activatedProperties>local</activatedProperties>
-                <liquibase.url>jdbc:mysql://localhost:3306/Autenticacao</liquibase.url>
-                <liquibase.username>root</liquibase.username>
-                <liquibase.password>1234</liquibase.password>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -243,18 +205,12 @@
             <id>docker</id>
             <properties>
                 <activatedProperties>docker</activatedProperties>
-                <liquibase.url>jdbc:mysql://mysql:3306/Autenticacao</liquibase.url>
-                <liquibase.username>root</liquibase.username>
-                <liquibase.password>1234</liquibase.password>
             </properties>
         </profile>
         <profile>
             <id>aws</id>
             <properties>
                 <activatedProperties>aws</activatedProperties>
-                <liquibase.url>jdbc:mysql://172.31.1.16:3306/Autenticacao</liquibase.url>
-                <liquibase.username>jenkins</liquibase.username>
-                <liquibase.password>jenkins@123</liquibase.password>
             </properties>
         </profile>
     </profiles>
