@@ -38,7 +38,7 @@ class ProdutoWS(val produtoService: IProdutoService) {
     }
 
     @GetMapping(value = ["/{id_produto}"])
-    //@PreAuthorize("hasAuthority('$BUSCAR_PRODUTO')")
+    @PreAuthorize("hasAuthority('$BUSCAR_PRODUTO')")
     fun buscarProduto(@PathVariable(value = "id_produto") idProduto: String?): ResponseEntity<ProdutoResponse> {
         var produto = produtoService.buscar(idProduto)
         var response = ProdutoResponse(produto.id, produto.nome, produto.descricao, produto.valor)
