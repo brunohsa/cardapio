@@ -4,6 +4,7 @@ import br.com.unip.cardapio.security.filter.AuthenticationFilter
 import br.com.unip.cardapio.security.filter.CorsFilterCustom
 import org.springframework.context.MessageSource
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.env.Environment
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.builders.WebSecurity
@@ -14,7 +15,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-class SecurityConfiguration(val messageSource: MessageSource) : WebSecurityConfigurerAdapter() {
+class SecurityConfiguration(val messageSource: MessageSource, val env: Environment) : WebSecurityConfigurerAdapter() {
 
     override fun configure(web: WebSecurity) {
         web.ignoring().antMatchers("/v1/produtos/**/imagem/download")
@@ -30,6 +31,6 @@ class SecurityConfiguration(val messageSource: MessageSource) : WebSecurityConfi
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(CorsFilterCustom(), UsernamePasswordAuthenticationFilter::class.java)
-                .addFilterBefore(AuthenticationFilter(messageSource), UsernamePasswordAuthenticationFilter::class.java)
+                .addFilterBefore(AuthenticationFilter(messageSource, env), UsernamePasswordAuthenticationFilter::class.java)
     }
 }
