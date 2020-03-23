@@ -92,6 +92,11 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <version>${kotlin.version}</version>
@@ -213,7 +218,6 @@
                 </dependencies>
             </plugin>
         </plugins>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -221,4 +225,37 @@
             </resource>
         </resources>
     </build>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <activatedProperties>local</activatedProperties>
+                <liquibase.url>jdbc:mysql://localhost:3306/Autenticacao</liquibase.url>
+                <liquibase.username>root</liquibase.username>
+                <liquibase.password>1234</liquibase.password>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>docker</id>
+            <properties>
+                <activatedProperties>docker</activatedProperties>
+                <liquibase.url>jdbc:mysql://mysql:3306/Autenticacao</liquibase.url>
+                <liquibase.username>root</liquibase.username>
+                <liquibase.password>1234</liquibase.password>
+            </properties>
+        </profile>
+        <profile>
+            <id>aws</id>
+            <properties>
+                <activatedProperties>aws</activatedProperties>
+                <liquibase.url>jdbc:mysql://172.31.1.16:3306/Autenticacao</liquibase.url>
+                <liquibase.username>jenkins</liquibase.username>
+                <liquibase.password>jenkins@123</liquibase.password>
+            </properties>
+        </profile>
+    </profiles>
 </project>
