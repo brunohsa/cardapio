@@ -2,9 +2,78 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60785265-7743-4b00-8f7b-94500422d85a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/filter/AuthenticationFilter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/filter/AuthenticationFilter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/cadastro.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/cardapio.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/StartApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/StartApplicationKt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/ProdutoDomain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/CampoMonetario.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/CampoNumerico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/CampoObrigatorio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/CampoOpcional.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/CampoTamanhoLimite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/Data.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/Descricao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/ICampo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/Imagem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/Nome.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/domain/campos/Valor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/dto/CadastroDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/dto/CardapioDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/dto/CategoriaDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/dto/DocumentoDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/dto/PessoaDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/dto/ProdutoDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/exception/CampoNumericoException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/exception/CampoObrigatorioException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/exception/CardapioBaseException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/exception/ECodigoErro.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/exception/FornecedorNaoPossuiCardapioException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/exception/FornecedorPossuiCardapioException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/exception/HandlerException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/exception/NaoEncontradoException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/exception/ParametroInvalidoException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/exception/UsuarioNaoPossuiCadastroException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/repository/ICardapioRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/repository/ICategoriaRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/repository/IProdutoRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/repository/entity/Cardapio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/repository/entity/Categoria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/repository/entity/Produto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/security/Permissoes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/security/SecurityConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/security/filter/AuthenticationFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/security/filter/CorsFilterCustom.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/CardapioService$buscarCardapio$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/CardapioService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/CategoriaService$buscar$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/CategoriaService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ICardapioService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ICategoriaService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/IProdutoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ProdutoService$buscarPorIdECategoriaId$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ProdutoService$buscarProduto$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ProdutoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/CardapioWS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/ProdutoWS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/request/AlterarImagemProdutoRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/request/CardapioRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/request/CategoriaRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/request/ProdutoRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/response/CardapioCriadoResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/response/CardapioResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/response/CategoriaResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/response/InfoCardapioResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/response/ProdutoResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/response/erro/EMicroservice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/response/erro/Erro.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/response/erro/ResponseError.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,6 +140,9 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573690161106" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/domain" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RecentsManager">
@@ -117,19 +189,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <module name="cardapio" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="br.com.unip.cardapio.StartApplicationKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
       <module name="cardapio" />
       <option name="VM_PARAMETERS" />
@@ -138,40 +197,6 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="MAIN_CLASS_NAME" value="br.com.unip.cardapio.StartApplicationKt" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <module name="cardapio" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
       <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -242,21 +267,5 @@
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
