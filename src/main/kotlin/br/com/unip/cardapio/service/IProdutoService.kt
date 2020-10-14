@@ -6,7 +6,7 @@ import org.springframework.core.io.InputStreamResource
 
 interface IProdutoService {
 
-    fun cadastrar(dto: ProdutoDTO, categoriaId: String): Produto
+    fun cadastrar(dto: ProdutoDTO, categoriaId: String, cardapioId: String): Produto
 
     fun remover(id: String, categoriaId: String)
 

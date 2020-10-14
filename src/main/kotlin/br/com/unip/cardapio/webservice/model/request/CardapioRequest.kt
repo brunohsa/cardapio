@@ -4,4 +4,5 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class CardapioRequest(@JsonProperty("nome") val nome: String?)
+class CardapioRequest(@JsonProperty("nome") val nome: String?,
+                      @JsonProperty("ativo") var ativo: Boolean = false)

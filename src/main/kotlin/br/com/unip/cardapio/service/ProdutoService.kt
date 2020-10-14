@@ -24,7 +24,7 @@ class ProdutoService(val produtoRepository: IProdutoRepository) : IProdutoServic
 
     val PATH_PASTA_BASE: String = "/opt/imagens"
 
-    override fun cadastrar(dto: ProdutoDTO, categoriaId: String): Produto {
+    override fun cadastrar(dto: ProdutoDTO, categoriaId: String, cardapioId: String): Produto {
         val produtoDomain = ProdutoDomain(dto.nome, dto.descricao, dto.valor, dto.imagem)
         val absolutePath = this.salvarImagem(produtoDomain.imagem.get())
         val produto = Produto(
@@ -32,7 +32,8 @@ class ProdutoService(val produtoRepository: IProdutoRepository) : IProdutoServic
                 descricao = produtoDomain.descricao.get(),
                 valor = produtoDomain.valor.get(),
                 urlImagem = absolutePath,
-                categoriaId = categoriaId
+                cardapioId = cardapioId,
+                categoriaId =  categoriaId
         )
         return produtoRepository.save(produto)
     }

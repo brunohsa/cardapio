@@ -17,17 +17,20 @@ class Cardapio {
     @DBRef
     var categorias: List<Categoria> = emptyList()
 
+    var ativo: Boolean = false
+
     constructor()
 
 
-    constructor(titulo: String?, uuidFornecedor: String?, categorias: List<Categoria>)
-            : this(titulo, uuidFornecedor) {
+    constructor(titulo: String?, uuidFornecedor: String?, categorias: List<Categoria>, ativo: Boolean)
+            : this(titulo, uuidFornecedor, ativo) {
         this.categorias = categorias
     }
 
-    constructor(titulo: String?, uuidFornecedor: String?) {
+    constructor(titulo: String?, uuidFornecedor: String?, ativo: Boolean) {
         this.titulo = titulo
         this.uuidFornecedor = uuidFornecedor
+        this.ativo = ativo
     }
 
     fun adicionarCategoria(categoria: Categoria) {

@@ -7,7 +7,6 @@ import br.com.unip.cardapio.dto.ProdutoDTO
 import br.com.unip.cardapio.exception.ECodigoErro.CARDAPIO_NAO_ENCONTRADO
 import br.com.unip.cardapio.exception.ECodigoErro.PRODUTO_NAO_ENCONTRADO
 import br.com.unip.cardapio.exception.ECodigoErro.TITULO_CARDAPIO_OBRIGATORIO
-import br.com.unip.cardapio.exception.FornecedorPossuiCardapioException
 import br.com.unip.cardapio.exception.NaoEncontradoException
 import br.com.unip.cardapio.exception.ParametroInvalidoException
 import br.com.unip.cardapio.exception.UsuarioNaoPossuiCadastroException
@@ -23,28 +22,32 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
 
     override fun criar(dto: CardapioDTO): String {
         val cadastroUUID = getCadastroUUID()
-        if (cardapioRepository.findByUuidFornecedor(cadastroUUID).isPresent) {
-            throw FornecedorPossuiCardapioException()
-        }
         if (dto.titulo.isNullOrEmpty()) {
             throw ParametroInvalidoException(TITULO_CARDAPIO_OBRIGATORIO)
         }
-        val cardapio = Cardapio(dto.titulo, cadastroUUID)
+        if (dto.ativo) {
+            val cardapioAtivo = cardapioRepository.findByAtivo()
+            cardapioAtivo.ifPresent { cardapio ->
+                cardapio.ativo = false
+                cardapioRepository.save(cardapio)
+            }
+        }
+        val cardapio = Cardapio(dto.titulo, cadastroUUID, dto.ativo)
         cardapioRepository.save(cardapio)
 
         return cardapio.id!!
     }
 
-    override fun adicionarCategoria(dto: CategoriaDTO): CardapioDTO {
-        val cardapio = this.buscarCardapio()
+    override fun adicionarCategoria(dto: CategoriaDTO, idCardapio: String): CardapioDTO {
+        val cardapio = this.buscarPorId(idCardapio)
         val categoria = categoriaService.adicionar(dto, cardapio.id!!)
         cardapio.adicionarCategoria(categoria)
 
-        return mapCardapio(cardapioRepository.save(cardapio))
+        return cardapioRepository.save(cardapio).toDTO()
     }
 
-    override fun removerCategoria(idCategoria: String) {
-        val cardapio = this.buscarCardapio()
+    override fun removerCategoria(idCategoria: String, idCardapio: String) {
+        val cardapio = this.buscarPorId(idCardapio)
         val categoria = cardapio.categorias.find { c -> c.id == idCategoria }
                 ?: throw NaoEncontradoException(PRODUTO_NAO_ENCONTRADO)
         cardapio.removerCategoria(categoria)
@@ -53,8 +56,8 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
         cardapioRepository.save(cardapio)
     }
 
-    override fun adicionarProduto(idCategoria: String, produtoDTO: ProdutoDTO) {
-        val cardapio = this.buscarCardapio()
+    override fun adicionarProduto(idCategoria: String, produtoDTO: ProdutoDTO, idCardapio: String) {
+        val cardapio = this.buscarPorId(idCardapio)
         categoriaService.adicionarProduto(idCategoria, cardapio.id!!, produtoDTO)
     }
 
@@ -62,27 +65,34 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
         categoriaService.alterarProduto(idCategoria, idProduto, produtoDTO)
     }
 
-    override fun removerProduto(idProduto: String, idCategoria: String) {
-        val cardapio = this.buscarCardapio()
+    override fun removerProduto(idProduto: String, idCategoria: String, idCardapio: String) {
+        val cardapio = this.buscarPorId(idCardapio)
         categoriaService.removerProduto(idCategoria, cardapio.id!!, idProduto)
     }
 
-    override fun buscar(): CardapioDTO {
-        return mapCardapio(this.buscarCardapio())
+    override fun buscar(id: String): CardapioDTO {
+        return this.buscarPorId(id).toDTO()
     }
 
-    private fun buscarCardapio(): Cardapio {
+    override fun buscarCardapios(): List<CardapioDTO> {
+        return this.buscarTodosCardapios().toDTO()
+    }
+
+    private fun buscarTodosCardapios(): List<Cardapio> {
         return cardapioRepository.findByUuidFornecedor(getCadastroUUID())
-                .orElseThrow { throw NaoEncontradoException(CARDAPIO_NAO_ENCONTRADO) }
+    }
+
+    private fun buscarPorId(id: String): Cardapio {
+        return cardapioRepository.findById(id).orElseThrow { throw NaoEncontradoException(CARDAPIO_NAO_ENCONTRADO) }
     }
 
     private fun getCadastroUUID(): String {
         return AuthenticationUtil.getCadastroUUID() ?: throw UsuarioNaoPossuiCadastroException()
     }
 
-    private fun mapCardapio(cardapio: Cardapio): CardapioDTO {
-        return CardapioDTO(cardapio.id, cardapio.titulo, this.mapCategorias(cardapio.categorias))
-    }
+    private fun List<Cardapio>.toDTO() = this.map { c -> c.toDTO() }
+
+    private fun Cardapio.toDTO() = CardapioDTO(this.id, this.titulo, this.ativo, mapCategorias(this.categorias))
 
     private fun mapCategorias(categorias: List<Categoria>): List<CategoriaDTO> {
         return categorias.map { c -> CategoriaDTO(c.id, c.titulo, this.mapProdutos(c.produtos)) }.toList()

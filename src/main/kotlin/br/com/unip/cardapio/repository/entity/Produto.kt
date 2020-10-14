@@ -20,13 +20,16 @@ class Produto {
 
     var categoriaId: String? = null
 
+    var cardapioId: String? = null
+
     constructor()
 
-    constructor(nome: String?, descricao: String?, valor: BigDecimal?, urlImagem: String?, categoriaId: String?) {
+    constructor(nome: String?, descricao: String?, valor: BigDecimal?, urlImagem: String?, categoriaId: String?, cardapioId: String?) {
         this.nome = nome
         this.descricao = descricao
         this.valor = valor
         this.urlImagem = urlImagem
         this.categoriaId = categoriaId
+        this.cardapioId = cardapioId
     }
 }

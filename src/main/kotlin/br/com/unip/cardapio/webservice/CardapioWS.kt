@@ -32,40 +32,50 @@ class CardapioWS(val cardapioService: ICardapioService) {
     @PostMapping(value = ["/criar"])
     @PreAuthorize("hasAuthority('$CRIAR_CARDAPIO')")
     fun criarCardapio(@RequestBody request: CardapioRequest): ResponseEntity<CardapioCriadoResponse> {
-        val dto = CardapioDTO(request.nome)
+        val dto = CardapioDTO(request.nome, request.ativo)
         val id = cardapioService.criar(dto)
 
         return ResponseEntity.ok(CardapioCriadoResponse(id))
     }
 
-    @GetMapping(value = ["/buscar"])
+    @GetMapping(value = ["/{id_cardapio}"])
     @PreAuthorize("hasAuthority('$BUSCAR_CARDAPIO')")
-    fun buscarCardapio(): ResponseEntity<CardapioResponse> {
-        val dto = cardapioService.buscar()
-        return ResponseEntity.ok(this.map(dto))
+    fun buscarCardapio(@PathVariable(value = "id_cardapio") idCardapio: String): ResponseEntity<CardapioResponse> {
+        val dto = cardapioService.buscar(idCardapio)
+        return ResponseEntity.ok(dto.toResponse())
     }
 
-    @PutMapping(value = ["/adicionar-categoria"])
+    @GetMapping()
+    @PreAuthorize("hasAuthority('$BUSCAR_CARDAPIO')")
+    fun buscarCardapios(): ResponseEntity<List<CardapioResponse>> {
+        val dto = cardapioService.buscarCardapios()
+        return ResponseEntity.ok(dto.toResponse())
+    }
+
+    @PutMapping(value = ["/{id_cardapio}/adicionar-categoria"])
     @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
-    fun adicionarCategoria(@RequestBody request: CategoriaRequest): ResponseEntity<CardapioResponse> {
+    fun adicionarCategoria(@RequestBody request: CategoriaRequest,
+                           @PathVariable(value = "id_cardapio") idCardapio: String): ResponseEntity<CardapioResponse> {
         val categoria = CategoriaDTO(request.titulo)
-        val cardapio = cardapioService.adicionarCategoria(categoria)
-        return ResponseEntity.ok(this.map(cardapio))
+        val cardapio = cardapioService.adicionarCategoria(categoria, idCardapio)
+        return ResponseEntity.ok(cardapio.toResponse())
     }
 
-    @DeleteMapping(value = ["/categoria/{id_categoria}"])
+    @DeleteMapping(value = ["/{id_cardapio}/categoria/{id_categoria}"])
     @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
-    fun removerCategoria(@PathVariable(value = "id_categoria") idCategoria: String): ResponseEntity<Void> {
-        cardapioService.removerCategoria(idCategoria)
+    fun removerCategoria(@PathVariable(value = "id_categoria") idCategoria: String,
+                         @PathVariable(value = "id_cardapio") idCardapio: String): ResponseEntity<Void> {
+        cardapioService.removerCategoria(idCategoria, idCardapio)
         return ResponseEntity.ok().build()
     }
 
-    @PutMapping(value = ["/categoria/{id_categoria}/adicionar-produto"])
+    @PutMapping(value = ["/{id_cardapio}/categoria/{id_categoria}/adicionar-produto"])
     @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
     fun adicionarProduto(@PathVariable(value = "id_categoria") idCategoria: String,
+                         @PathVariable(value = "id_cardapio") idCardapio: String,
                          @RequestBody request: ProdutoRequest): ResponseEntity<Void> {
         val produto = ProdutoDTO(request.nome, request.descricao, request.valor, request.imagem)
-        cardapioService.adicionarProduto(idCategoria, produto)
+        cardapioService.adicionarProduto(idCategoria, produto, idCardapio)
 
         return ResponseEntity.ok().build()
     }
@@ -81,18 +91,19 @@ class CardapioWS(val cardapioService: ICardapioService) {
         return ResponseEntity.ok().build()
     }
 
-    @DeleteMapping(value = ["/categoria/{id_categoria}/produto/{id_produto}"])
+    @DeleteMapping(value = ["/{id_cardapio}/categoria/{id_categoria}/produto/{id_produto}"])
     @PreAuthorize("hasAuthority('$ALTERAR_CARDAPIO')")
     fun removerProduto(@PathVariable(value = "id_produto") idProduto: String,
-                       @PathVariable(value = "id_categoria") idCategoria: String): ResponseEntity<Void> {
-        cardapioService.removerProduto(idProduto, idCategoria)
+                       @PathVariable(value = "id_categoria") idCategoria: String,
+                       @PathVariable(value = "id_cardapio") idCardapio: String): ResponseEntity<Void> {
+        cardapioService.removerProduto(idProduto, idCategoria, idCardapio)
         return ResponseEntity.ok().build()
     }
 
-    private fun map(cardapioDTO: CardapioDTO): CardapioResponse {
-        var produtosResponse = this.mapCategorias(cardapioDTO.categorias!!)
-        return CardapioResponse(cardapioDTO.id, cardapioDTO.titulo, produtosResponse)
-    }
+    private fun List<CardapioDTO>.toResponse() = this.map { c -> c.toResponse() }
+
+    private fun CardapioDTO.toResponse() =
+            CardapioResponse(this.id, this.titulo, mapCategorias(this.categorias!!), this.ativo)
 
     private fun mapCategorias(categorias: List<CategoriaDTO>): List<CategoriaResponse> {
         return categorias.map { c ->

@@ -32,7 +32,7 @@ class CategoriaService(val categoriaRepository: ICategoriaRepository,
 
     override fun adicionarProduto(categoriaId: String, cardapioId: String, produtoDTO: ProdutoDTO): Categoria {
         val categoria = buscar(categoriaId, cardapioId)
-        val produto = produtoService.cadastrar(produtoDTO, cardapioId)
+        val produto = produtoService.cadastrar(produtoDTO, categoriaId, cardapioId)
         categoria.adicionarProduto(produto)
 
         return categoriaRepository.save(categoria)

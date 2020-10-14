@@ -6,5 +6,7 @@ import java.util.Optional
 
 interface ICardapioRepository : MongoRepository<Cardapio, String> {
 
-    fun findByUuidFornecedor(uuidFornecedor: String): Optional<Cardapio>
+    fun findByUuidFornecedor(uuidFornecedor: String): List<Cardapio>
+
+    fun findByAtivo(ativo: Boolean = true): Optional<Cardapio>
 }
