@@ -2,30 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60785265-7743-4b00-8f7b-94500422d85a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/dto/CardapioDTO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/dto/CardapioDTO.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/ICardapioRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/ICardapioRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/entity/Cardapio.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/entity/Cardapio.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/entity/Produto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/entity/Produto.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CardapioService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CardapioService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CategoriaService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CategoriaService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ICardapioService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ICardapioService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/IProdutoService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/IProdutoService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/SecurityConfiguration.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/SecurityConfiguration.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/filter/CorsFilterCustom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/filter/CorsFilterCustom.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ProdutoService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ProdutoService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/CardapioWS.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/CardapioWS.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/ProdutoWS.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/ProdutoWS.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/request/CardapioRequest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/request/CardapioRequest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/response/CardapioResponse.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/response/CardapioResponse.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cadastro-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/cadastro-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cadastro-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/cadastro-1.0-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/repository/entity/Produto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/repository/entity/Produto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/CategoriaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/CategoriaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/IProdutoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/IProdutoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/dto/CardapioDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/dto/CardapioDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/security/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/security/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/security/filter/CorsFilterCustom.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/security/filter/CorsFilterCustom.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/CardapioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/CardapioService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ICardapioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ICardapioService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ProdutoService$buscarPorIdECategoriaId$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ProdutoService$buscarPorIdECategoriaId$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ProdutoService$buscarProduto$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ProdutoService$buscarProduto$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ProdutoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/service/ProdutoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/CardapioWS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/CardapioWS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/ProdutoWS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/ProdutoWS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/request/CardapioRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/br/com/unip/cardapio/webservice/model/request/CardapioRequest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,67 +35,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CategoriaService.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ProdutoService.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/CardapioWS.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="50" column="41" lean-forward="true" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/response/CardapioResponse.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/dto/CardapioDTO.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/request/CardapioRequest.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-              <folding>
-                <element signature="e#55#168#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CardapioService.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="94" column="80" selection-start-line="94" selection-start-column="80" selection-end-line="94" selection-end-column="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/ICardapioRepository.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="272">
+              <caret line="83" column="80" selection-start-line="83" selection-start-column="80" selection-end-line="83" selection-end-column="80" />
             </state>
           </provider>
         </entry>
@@ -106,8 +46,86 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ICardapioService.kt">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CardapioService.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/exception/HandlerException.kt">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/ProdutoWS.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/request/CardapioRequest.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+              <folding>
+                <element signature="e#55#168#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/response/CardapioResponse.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1479">
+              <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/SecurityConfiguration.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="e#39#865#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/filter/CorsFilterCustom.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="867">
+              <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -130,7 +148,14 @@
       <find>microservice.autenticacao.url</find>
       <find>autenticacao-ms@</find>
       <find>log</find>
+      <find>@ApiImplicitParams(ApiImplicitParam(name = &quot;auth&quot;, value = &quot;Token&quot;, required = true, dataType = &quot;string&quot;, paramType = &quot;header&quot;))</find>
+      <find>Token de autorização</find>
+      <find>e</find>
+      <find>produces</find>
     </findStrings>
+    <replaceStrings>
+      <replace>Token</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -145,17 +170,23 @@
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/estudo/Carro.java" />
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/estudo/Main.java" />
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/entity/Produto.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ProdutoService.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/IProdutoService.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CategoriaService.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/entity/Cardapio.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/ICardapioRepository.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ICardapioService.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/response/CardapioResponse.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/CardapioWS.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/request/CardapioRequest.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CardapioService.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/dto/CardapioDTO.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/configuration/ProdutoDomain.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/configuration/SwaggerConfiguration.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/ProdutoWS.kt" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/SecurityConfiguration.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/filter/CorsFilterCustom.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/request/CardapioRequest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/CardapioWS.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ProdutoService.kt" />
       </list>
     </option>
   </component>
@@ -180,66 +211,10 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="cardapio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cardapio" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cardapio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cardapio" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cardapio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cardapio" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cardapio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cardapio" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cardapio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cardapio" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="cardapio" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cardapio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cardapio" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="cardapio" type="462c0819:PsiDirectoryNode" />
-              <item name="webservice" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cardapio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cardapio" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1602271790880" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1602711023363" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/domain" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -249,11 +224,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="br.com.unip.cardapio.configuration" />
       <recent name="br.com.unip.cardapio.webservice.model.response" />
       <recent name="br.com.unip.cardapio.exception" />
       <recent name="br.com.unip.cardapio.webservice.model.request" />
       <recent name="br.com.unip.cardapio.webservice" />
-      <recent name="br.com.unip.cardapio.dto" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="br.com.unip.cardapio.domain.completo" />
@@ -364,7 +339,7 @@
       <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49966952" weight="0.2019544" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3257329" />
       <window_info anchor="bottom" id="Event Log" order="3" sideWeight="0.5009914" side_tool="true" weight="0.3989704" />
-      <window_info active="true" anchor="bottom" id="Messages" order="4" sideWeight="0.49966952" visible="true" weight="0.19706841" />
+      <window_info anchor="bottom" id="Messages" order="4" sideWeight="0.49966952" weight="0.19706841" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="DB Execution Console" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.27687296" />
@@ -459,23 +434,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/CardapioWS.kt</url>
-          <line>35</line>
+          <line>106</line>
           <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CardapioService.kt</url>
-          <line>34</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-function">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CardapioService.kt</url>
-          <line>94</line>
-          <properties class="br.com.unip.cardapio.service.CardapioService" method="toDTO">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -486,6 +447,31 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>Base64.getMimeDecoder().decode(imagemBase64)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Base64.getDecoder().decode(imagemBase64)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>imagemBase64</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>request.imagem</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>e</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>cardapio</expression-string>
         <language-id>kotlin</language-id>
@@ -551,13 +537,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/exception/HandlerException.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="15" selection-start-line="15" selection-end-line="47" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/exception/ParametroInvalidoException.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -571,13 +550,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/estudo/Motor.java" />
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/estudo/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/estudo/Carro.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application-local.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -585,22 +557,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3383">
-          <caret line="199" column="24" selection-start-line="199" selection-start-column="24" selection-end-line="199" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/StartApplication.kt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/ProdutoWS.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/entity/Categoria.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -629,14 +587,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CategoriaService.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ProdutoService.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
@@ -661,37 +612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ICardapioService.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/response/CardapioResponse.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/request/CardapioRequest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#55#168#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/CardapioWS.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="50" column="41" lean-forward="true" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/repository/ICardapioRepository.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -699,17 +619,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CardapioService.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="94" column="80" selection-start-line="94" selection-start-column="80" selection-end-line="94" selection-end-column="80" />
+        <state relative-caret-position="51">
+          <caret line="3" column="28" lean-forward="true" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/configuration/SwaggerConfiguration.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#44#389#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/dto/CardapioDTO.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="357">
           <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/CardapioWS.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="96" column="54" selection-start-line="96" selection-start-column="54" selection-end-line="96" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ICardapioService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/CardapioService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/exception/HandlerException.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/ProdutoWS.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1479">
+          <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/SecurityConfiguration.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="e#39#865#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/security/filter/CorsFilterCustom.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/service/ProdutoService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="83" column="80" selection-start-line="83" selection-start-column="80" selection-end-line="83" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/request/CardapioRequest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding>
+            <element signature="e#55#168#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/br/com/unip/cardapio/webservice/model/response/CardapioResponse.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
         </state>
       </provider>
     </entry>

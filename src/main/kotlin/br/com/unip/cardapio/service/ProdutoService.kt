@@ -18,6 +18,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.Base64
 import java.util.UUID
+import javax.xml.bind.DatatypeConverter
 
 @Service
 class ProdutoService(val produtoRepository: IProdutoRepository) : IProdutoService {
@@ -80,7 +81,7 @@ class ProdutoService(val produtoRepository: IProdutoRepository) : IProdutoServic
         val path = "$PATH_PASTA_BASE/$cadastroUuid"
         this.criarPasta(path)
 
-        val imagem: ByteArray = Base64.getDecoder().decode(imagemBase64)
+        val imagem: ByteArray = DatatypeConverter.parseBase64Binary(imagemBase64.split(",")[1])
 
         val nomeImagem = "${UUID.randomUUID()}.jpg"
         val arquivo = File("$path/$nomeImagem")

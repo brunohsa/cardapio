@@ -5,6 +5,8 @@ import br.com.unip.cardapio.security.Permissoes.BUSCAR_PRODUTO
 import br.com.unip.cardapio.service.IProdutoService
 import br.com.unip.cardapio.webservice.model.request.AlterarImagemProdutoRequest
 import br.com.unip.cardapio.webservice.model.response.ProdutoResponse
+import io.swagger.annotations.ApiImplicitParam
+import io.swagger.annotations.ApiImplicitParams
 import org.springframework.core.io.InputStreamResource
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping(value = ["/v1/produtos"])
 class ProdutoWS(val produtoService: IProdutoService) {
 
+    @ApiImplicitParams(ApiImplicitParam(name = "token", value = "Token", required = true, paramType = "header"))
     @PutMapping(value = ["/{id_produto}/alterar-imagem"])
     @PreAuthorize("hasAuthority('$ALTERAR_IMAGEM_PRODUTO')")
     fun alterarImagem(@PathVariable(value = "id_produto") idProduto: String?,
@@ -37,6 +40,7 @@ class ProdutoWS(val produtoService: IProdutoService) {
                 .body(imagem)
     }
 
+    @ApiImplicitParams(ApiImplicitParam(name = "token", value = "Token", required = true, paramType = "header"))
     @GetMapping(value = ["/{id_produto}"])
     @PreAuthorize("hasAuthority('$BUSCAR_PRODUTO')")
     fun buscarProduto(@PathVariable(value = "id_produto") idProduto: String?): ResponseEntity<ProdutoResponse> {
