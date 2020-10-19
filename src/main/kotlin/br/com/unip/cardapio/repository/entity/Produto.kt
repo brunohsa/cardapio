@@ -22,14 +22,18 @@ class Produto {
 
     var cardapioId: String? = null
 
+    var estoque: Int? = null
+
     constructor()
 
-    constructor(nome: String?, descricao: String?, valor: BigDecimal?, urlImagem: String?, categoriaId: String?, cardapioId: String?) {
+    constructor(nome: String?, descricao: String?, valor: BigDecimal?, categoriaId: String?, cardapioId: String?,
+                estoque: Int?) {
         this.nome = nome
         this.descricao = descricao
         this.valor = valor
         this.urlImagem = urlImagem
         this.categoriaId = categoriaId
         this.cardapioId = cardapioId
+        this.estoque = estoque
     }
 }

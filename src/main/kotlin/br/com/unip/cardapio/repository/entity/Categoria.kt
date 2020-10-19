@@ -17,11 +17,15 @@ class Categoria {
 
     var cardapioId: String? = null
 
+    @DBRef
+    var subcategoria: Subcategoria? = null
+
     constructor()
 
-    constructor(titulo: String?, cardapioId: String?) {
+    constructor(titulo: String?, subcategoria: Subcategoria?, cardapioId: String?) {
         this.titulo = titulo
         this.cardapioId = cardapioId
+        this.subcategoria = subcategoria
     }
 
 

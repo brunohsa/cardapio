@@ -11,12 +11,7 @@ import org.springframework.core.io.InputStreamResource
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping(value = ["/v1/produtos"])
@@ -44,8 +39,9 @@ class ProdutoWS(val produtoService: IProdutoService) {
     @GetMapping(value = ["/{id_produto}"])
     @PreAuthorize("hasAuthority('$BUSCAR_PRODUTO')")
     fun buscarProduto(@PathVariable(value = "id_produto") idProduto: String?): ResponseEntity<ProdutoResponse> {
-        var produto = produtoService.buscar(idProduto)
-        var response = ProdutoResponse(produto.id, produto.nome, produto.descricao, produto.valor)
+        var dto = produtoService.buscar(idProduto)
+        var response = ProdutoResponse(dto.produtoId, dto.nome, dto.descricao, dto.valor, dto.estoque)
+
         return ResponseEntity.ok().body(response)
     }
 }

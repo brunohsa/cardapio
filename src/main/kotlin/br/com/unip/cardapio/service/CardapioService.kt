@@ -1,11 +1,8 @@
 package br.com.unip.cardapio.service
 
 import br.com.unip.autenticacaolib.util.AuthenticationUtil
-import br.com.unip.cardapio.dto.CardapioDTO
-import br.com.unip.cardapio.dto.CategoriaDTO
-import br.com.unip.cardapio.dto.ProdutoDTO
+import br.com.unip.cardapio.dto.*
 import br.com.unip.cardapio.exception.ECodigoErro.CARDAPIO_NAO_ENCONTRADO
-import br.com.unip.cardapio.exception.ECodigoErro.PRODUTO_NAO_ENCONTRADO
 import br.com.unip.cardapio.exception.ECodigoErro.TITULO_CARDAPIO_OBRIGATORIO
 import br.com.unip.cardapio.exception.NaoEncontradoException
 import br.com.unip.cardapio.exception.ParametroInvalidoException
@@ -14,11 +11,15 @@ import br.com.unip.cardapio.repository.ICardapioRepository
 import br.com.unip.cardapio.repository.entity.Cardapio
 import br.com.unip.cardapio.repository.entity.Categoria
 import br.com.unip.cardapio.repository.entity.Produto
+import br.com.unip.cardapio.repository.entity.Subcategoria
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 
 @Service
 class CardapioService(val cardapioRepository: ICardapioRepository,
-                      val categoriaService: ICategoriaService) : ICardapioService {
+                      val categoriaService: ICategoriaService,
+                      val produtoService: IProdutoService,
+                      @Value("\${download.imagens.url}") val urlDownload: String) : ICardapioService {
 
     override fun criar(dto: CardapioDTO): String {
         val cadastroUUID = getCadastroUUID()
@@ -26,11 +27,7 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
             throw ParametroInvalidoException(TITULO_CARDAPIO_OBRIGATORIO)
         }
         if (dto.ativo) {
-            val cardapioAtivo = cardapioRepository.findByAtivo()
-            cardapioAtivo.ifPresent { cardapio ->
-                cardapio.ativo = false
-                cardapioRepository.save(cardapio)
-            }
+            this.alterarOutroCardapioParaInativo()
         }
         val cardapio = Cardapio(dto.titulo, cadastroUUID, dto.ativo)
         cardapioRepository.save(cardapio)
@@ -38,7 +35,33 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
         return cardapio.id!!
     }
 
-    override fun adicionarCategoria(dto: CategoriaDTO, idCardapio: String): CardapioDTO {
+    override fun remover(idCardapio: String) {
+        val cardapio = this.buscarPorId(idCardapio)
+        cardapio.categorias.forEach { c -> removerCategoria(c.id!!, cardapio.id!!) }
+        cardapioRepository.delete(cardapio)
+    }
+
+    override fun alterar(idCardapio: String, cardapioDTO: CardapioDTO) {
+        val cardapio = buscarPorId(idCardapio)
+        if (!cardapioDTO.titulo.isNullOrEmpty()) {
+            cardapio.titulo = cardapioDTO.titulo
+        }
+        if (cardapioDTO.ativo) {
+            this.alterarOutroCardapioParaInativo()
+            cardapio.ativo = cardapioDTO.ativo
+        }
+        cardapioRepository.save(cardapio)
+    }
+
+    private fun alterarOutroCardapioParaInativo() {
+        val cardapioAtivo = cardapioRepository.findByAtivo()
+        cardapioAtivo.ifPresent { cardapio ->
+            cardapio.ativo = false
+            cardapioRepository.save(cardapio)
+        }
+    }
+
+    override fun adicionarCategoria(dto: InserirCategoriaDTO, idCardapio: String): CardapioDTO {
         val cardapio = this.buscarPorId(idCardapio)
         val categoria = categoriaService.adicionar(dto, cardapio.id!!)
         cardapio.adicionarCategoria(categoria)
@@ -49,7 +72,7 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
     override fun removerCategoria(idCategoria: String, idCardapio: String) {
         val cardapio = this.buscarPorId(idCardapio)
         val categoria = cardapio.categorias.find { c -> c.id == idCategoria }
-                ?: throw NaoEncontradoException(PRODUTO_NAO_ENCONTRADO)
+                ?: throw NaoEncontradoException(CARDAPIO_NAO_ENCONTRADO)
         cardapio.removerCategoria(categoria)
 
         categoriaService.remover(idCategoria, cardapio.id!!)
@@ -61,8 +84,8 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
         categoriaService.adicionarProduto(idCategoria, cardapio.id!!, produtoDTO)
     }
 
-    override fun alterarProduto(idCategoria: String, idProduto: String, produtoDTO: ProdutoDTO) {
-        categoriaService.alterarProduto(idCategoria, idProduto, produtoDTO)
+    override fun alterarProduto(idCategoria: String, produtoDTO: ProdutoDTO) {
+        produtoService.alterar(idCategoria, produtoDTO.produtoId!!, produtoDTO)
     }
 
     override fun removerProduto(idProduto: String, idCategoria: String, idCardapio: String) {
@@ -95,10 +118,28 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
     private fun Cardapio.toDTO() = CardapioDTO(this.id, this.titulo, this.ativo, mapCategorias(this.categorias))
 
     private fun mapCategorias(categorias: List<Categoria>): List<CategoriaDTO> {
-        return categorias.map { c -> CategoriaDTO(c.id, c.titulo, this.mapProdutos(c.produtos)) }.toList()
+        return categorias.map { c ->
+            CategoriaDTO(c.id, c.titulo, this.mapSubcategoria(c.subcategoria), this.mapProdutos(c.produtos))
+        }.toList()
+    }
+
+    private fun mapSubcategoria(subcategoria: Subcategoria?): SubcategoriaDTO? {
+        if (subcategoria == null) {
+            return null
+        }
+        return SubcategoriaDTO(subcategoria.id, subcategoria.nome, subcategoria.descricao)
     }
 
     private fun mapProdutos(produtos: List<Produto>): List<ProdutoDTO> {
-        return produtos.map { p -> ProdutoDTO(p.id, p.nome, p.descricao, p.valor.toString(), p.urlImagem) }.toList()
+        return produtos.map { p ->
+            ProdutoDTO(p.id, p.nome, p.descricao, p.valor.toString(), p.estoque, montarURLDownloadImagem(p))
+        }.toList()
+    }
+
+    private fun montarURLDownloadImagem(produto: Produto): String? {
+        if (produto.urlImagem.isNullOrEmpty()) {
+            return ""
+        }
+        return urlDownload.format(produto.id)
     }
 }

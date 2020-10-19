@@ -1,0 +1,15 @@
+use carrinho
+db.subcategoria.insertMany([
+    { nome: "LANCHES", descricao: "Lanches" },
+    { nome: "BEBIDAS", descricao: "Bebidas" },
+    { nome: "BOLO_E_DOCES", descricao: "Bolo e Doces" },
+    { nome: "PIZZA", descricao: "Pizza" },
+    { nome: "BRASILEIRA", descricao: "Comida Brasileira" },
+    { nome: "ITALIANA", descricao: "Comida Italiana" },
+    { nome: "JAPONESA", descricao: "Comida Japonesa" },
+    { nome: "CHINESA", descricao: "Comida Chinesa" },
+    { nome: "ARABE", descricao: "Comida Árabe" },
+    { nome: "COMBOS", descricao: "Combos" },
+    { nome: "CALDOS", descricao: "Caldos" },
+    { nome: "OUTROS", descricao: "Outros" },
+])

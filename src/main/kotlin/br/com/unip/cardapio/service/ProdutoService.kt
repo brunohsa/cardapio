@@ -16,8 +16,7 @@ import java.io.FileInputStream
 import java.math.BigDecimal
 import java.nio.file.Files
 import java.nio.file.Paths
-import java.util.Base64
-import java.util.UUID
+import java.util.*
 import javax.xml.bind.DatatypeConverter
 
 @Service
@@ -26,22 +25,20 @@ class ProdutoService(val produtoRepository: IProdutoRepository) : IProdutoServic
     val PATH_PASTA_BASE: String = "/opt/imagens"
 
     override fun cadastrar(dto: ProdutoDTO, categoriaId: String, cardapioId: String): Produto {
-        val produtoDomain = ProdutoDomain(dto.nome, dto.descricao, dto.valor, dto.imagem)
-        val absolutePath = this.salvarImagem(produtoDomain.imagem.get())
+        val produtoDomain = ProdutoDomain(dto.nome, dto.descricao, dto.valor, dto.estoque)
         val produto = Produto(
                 nome = produtoDomain.nome.get(),
                 descricao = produtoDomain.descricao.get(),
                 valor = produtoDomain.valor.get(),
-                urlImagem = absolutePath,
                 cardapioId = cardapioId,
-                categoriaId =  categoriaId
+                categoriaId = categoriaId,
+                estoque = produtoDomain.estoque.get()
         )
         return produtoRepository.save(produto)
     }
 
     override fun alterar(id: String, categoriaId: String, produtoDTO: ProdutoDTO): Produto {
         val produto = buscarProduto(id)
-
         if (!produtoDTO.descricao.isNullOrEmpty()) {
             produto.descricao = produtoDTO.descricao
         }
@@ -51,6 +48,8 @@ class ProdutoService(val produtoRepository: IProdutoRepository) : IProdutoServic
         if (!produtoDTO.valor.isNullOrEmpty()) {
             produto.valor = BigDecimal(produtoDTO.valor)
         }
+        produto.estoque = produtoDTO.estoque
+
         return produtoRepository.save(produto)
     }
 
@@ -107,7 +106,7 @@ class ProdutoService(val produtoRepository: IProdutoRepository) : IProdutoServic
 
     override fun buscar(id: String?): ProdutoDTO {
         val produto = buscarProduto(id)
-        return ProdutoDTO(produto.id, produto.nome, produto.descricao, produto.valor.toString(), produto.urlImagem)
+        return ProdutoDTO(produto.id, produto.nome, produto.descricao, produto.valor.toString(), produto.estoque)
     }
 
     private fun buscarProduto(id: String?): Produto {

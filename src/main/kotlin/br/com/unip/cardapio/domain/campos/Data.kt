@@ -1,6 +1,5 @@
 package br.com.unip.cardapio.domain.campos
 
-import br.com.unip.cardapio.exception.ECodigoErro
 import br.com.unip.cardapio.exception.ECodigoErro.FORMATO_DATA_INVALIDO
 import br.com.unip.cardapio.exception.ParametroInvalidoException
 import java.time.LocalDate

@@ -1,26 +1,43 @@
 package br.com.unip.cardapio.service
 
-import br.com.unip.cardapio.dto.CategoriaDTO
+import br.com.unip.cardapio.dto.AlterarCategoriaDTO
+import br.com.unip.cardapio.dto.InserirCategoriaDTO
 import br.com.unip.cardapio.dto.ProdutoDTO
-import br.com.unip.cardapio.exception.ECodigoErro.CATEGORIA_NAO_ENCONTRADA
-import br.com.unip.cardapio.exception.ECodigoErro.PRODUTO_NAO_ENCONTRADO
-import br.com.unip.cardapio.exception.ECodigoErro.TITULO_CATEGORIA_OBRIGATORIO
+import br.com.unip.cardapio.exception.ECodigoErro.*
 import br.com.unip.cardapio.exception.NaoEncontradoException
 import br.com.unip.cardapio.exception.ParametroInvalidoException
 import br.com.unip.cardapio.repository.ICategoriaRepository
 import br.com.unip.cardapio.repository.entity.Categoria
+import br.com.unip.cardapio.repository.entity.Subcategoria
 import org.springframework.stereotype.Service
 
 @Service
 class CategoriaService(val categoriaRepository: ICategoriaRepository,
+                       val subcategoriaService: ISubcategoriaService,
                        val produtoService: IProdutoService) : ICategoriaService {
 
-    override fun adicionar(dto: CategoriaDTO, cardapioId: String): Categoria {
+    override fun adicionar(dto: InserirCategoriaDTO, cardapioId: String): Categoria {
         if (dto.titulo.isNullOrEmpty()) {
             throw ParametroInvalidoException(TITULO_CATEGORIA_OBRIGATORIO)
         }
-        val categoria = Categoria(dto.titulo, cardapioId)
+        var subcategoria: Subcategoria? = null
+        if (!dto.subcategoriaId.isNullOrEmpty()) {
+            subcategoria = subcategoriaService.buscar(dto.subcategoriaId!!)
+        }
+        val categoria = Categoria(dto.titulo, subcategoria, cardapioId)
         return categoriaRepository.save(categoria)
+    }
+
+    override fun alterar(dto: AlterarCategoriaDTO, cardapioId: String) {
+        val categoria = buscar(dto.categoriaId, cardapioId)
+        if (!dto.titulo.isNullOrEmpty()) {
+            categoria.titulo = dto.titulo
+        }
+        if (!dto.subcategoriaId.isNullOrEmpty()) {
+            val subcategoria = subcategoriaService.buscar(dto.subcategoriaId!!)
+            categoria.subcategoria = subcategoria
+        }
+        categoriaRepository.save(categoria)
     }
 
     override fun remover(categoriaId: String, cardapioId: String) {
@@ -38,10 +55,6 @@ class CategoriaService(val categoriaRepository: ICategoriaRepository,
         return categoriaRepository.save(categoria)
     }
 
-    override fun alterarProduto(idCategoria: String, idProduto: String, dto: ProdutoDTO) {
-        produtoService.alterar(idProduto, idCategoria, dto)
-    }
-
     override fun removerProduto(categoriaId: String, cardapioId: String, produtoId: String) {
         val categoria = buscar(categoriaId, cardapioId)
         val produto = categoria.produtos.find { p -> p.id == produtoId }
@@ -52,7 +65,7 @@ class CategoriaService(val categoriaRepository: ICategoriaRepository,
         categoriaRepository.save(categoria)
     }
 
-    private fun buscar(id: String, cardapioId: String): Categoria {
+    override fun buscar(id: String, cardapioId: String): Categoria {
         return categoriaRepository.findByIdAndCardapioId(id, cardapioId)
                 .orElseThrow { throw NaoEncontradoException(CATEGORIA_NAO_ENCONTRADA) }
     }

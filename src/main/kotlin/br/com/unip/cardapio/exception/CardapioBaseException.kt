@@ -1,7 +1,6 @@
 package br.com.unip.cardapio.exception
 
 import org.springframework.http.HttpStatus
-import java.lang.RuntimeException
 
 open class CardapioBaseException : RuntimeException {
 
