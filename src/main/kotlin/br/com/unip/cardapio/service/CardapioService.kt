@@ -6,6 +6,7 @@ import br.com.unip.cardapio.exception.ECodigoErro.CARDAPIO_NAO_ENCONTRADO
 import br.com.unip.cardapio.exception.ECodigoErro.TITULO_CARDAPIO_OBRIGATORIO
 import br.com.unip.cardapio.exception.NaoEncontradoException
 import br.com.unip.cardapio.exception.ParametroInvalidoException
+import br.com.unip.cardapio.exception.PossuiItensDoCardapioEmCarrinhosException
 import br.com.unip.cardapio.exception.UsuarioNaoPossuiCadastroException
 import br.com.unip.cardapio.repository.ICardapioRepository
 import br.com.unip.cardapio.repository.entity.Cardapio
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service
 class CardapioService(val cardapioRepository: ICardapioRepository,
                       val categoriaService: ICategoriaService,
                       val produtoService: IProdutoService,
+                      val carrinho: ICarrinhoService,
                       @Value("\${download.imagens.url}") val urlDownload: String) : ICardapioService {
 
     override fun criar(dto: CardapioDTO): String {
@@ -37,8 +39,16 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
 
     override fun remover(idCardapio: String) {
         val cardapio = this.buscarPorId(idCardapio)
+        if (possuiCarrinhosComProdutosDoCardapio(cardapio.uuidFornecedor!!)) {
+            throw PossuiItensDoCardapioEmCarrinhosException()
+        }
         cardapio.categorias.forEach { c -> removerCategoria(c.id!!, cardapio.id!!) }
         cardapioRepository.delete(cardapio)
+    }
+
+    private fun possuiCarrinhosComProdutosDoCardapio(fornecedorUUID: String): Boolean {
+        val carrinhos = carrinho.buscarCarrinhosPorFornecedor(fornecedorUUID)
+        return carrinhos.isNotEmpty()
     }
 
     override fun alterar(idCardapio: String, cardapioDTO: CardapioDTO) {

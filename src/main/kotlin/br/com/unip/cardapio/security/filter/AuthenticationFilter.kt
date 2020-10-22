@@ -9,6 +9,7 @@ import br.com.unip.cardapio.exception.ECodigoErro
 import br.com.unip.cardapio.exception.ECodigoErro.TOKEN_EXPIRADO
 import br.com.unip.cardapio.exception.ECodigoErro.TOKEN_INVALIDO
 import br.com.unip.cardapio.webservice.model.response.erro.Erro
+import br.com.unip.cardapio.webservice.model.response.erro.ResponseError
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.context.MessageSource
 import org.springframework.core.env.Environment
@@ -52,7 +53,7 @@ class AuthenticationFilter(private val messageSource: MessageSource, val env: En
         val httpResponse = response as HttpServletResponse
 
         val erro = getErro(codigo)
-        httpResponse.writer.write(ObjectMapper().writeValueAsString(erro))
+        httpResponse.writer.write(ObjectMapper().writeValueAsString(ResponseError(erro)))
         httpResponse.status = httpStatus.value()
         httpResponse.contentType = MediaType.APPLICATION_JSON_VALUE
     }

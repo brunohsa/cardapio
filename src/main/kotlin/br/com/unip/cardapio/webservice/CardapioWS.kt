@@ -5,6 +5,7 @@ import br.com.unip.cardapio.security.Permissoes.ALTERAR_CARDAPIO
 import br.com.unip.cardapio.security.Permissoes.BUSCAR_CARDAPIO
 import br.com.unip.cardapio.security.Permissoes.CRIAR_CARDAPIO
 import br.com.unip.cardapio.service.ICardapioService
+import br.com.unip.cardapio.service.ICarrinhoService
 import br.com.unip.cardapio.service.ICategoriaService
 import br.com.unip.cardapio.webservice.model.request.CardapioRequest
 import br.com.unip.cardapio.webservice.model.request.CategoriaRequest
