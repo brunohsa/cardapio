@@ -153,7 +153,7 @@ class CardapioWS(val cardapioService: ICardapioService,
 
     private fun map(produtosDTO: List<ProdutoDTO>): List<ProdutoResponse> {
         return produtosDTO.map { p ->
-            ProdutoResponse(p.produtoId, p.nome, p.descricao, p.valor, p.estoque, p.urlImagem)
+            ProdutoResponse(p.produtoId, p.nome, p.descricao, p.valor, p.estoque, p.nota, p.urlImagem)
         }.toList()
     }
 }

@@ -14,5 +14,7 @@ class ProdutoResponse(@JsonProperty(value = "id")
                       var valor: String?,
                       @JsonProperty(value = "estoque")
                       var estoque: Int? = 0,
+                      @JsonProperty(value = "nota")
+                      var nota: Double? = null,
                       @JsonProperty(value = "url")
                       var url: String? = "")

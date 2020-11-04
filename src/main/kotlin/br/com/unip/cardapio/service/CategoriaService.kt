@@ -36,6 +36,7 @@ class CategoriaService(val categoriaRepository: ICategoriaRepository,
         if (!dto.subcategoriaId.isNullOrEmpty()) {
             val subcategoria = subcategoriaService.buscar(dto.subcategoriaId!!)
             categoria.subcategoria = subcategoria
+            categoria.produtos.forEach { p -> produtoService.atualizarSubcategoria(p.id!!, subcategoria) }
         }
         categoriaRepository.save(categoria)
     }
@@ -49,7 +50,8 @@ class CategoriaService(val categoriaRepository: ICategoriaRepository,
 
     override fun adicionarProduto(categoriaId: String, cardapioId: String, produtoDTO: ProdutoDTO): Categoria {
         val categoria = buscar(categoriaId, cardapioId)
-        val produto = produtoService.cadastrar(produtoDTO, categoriaId, cardapioId)
+        val subcategoriaId = categoria.subcategoria?.id
+        val produto = produtoService.cadastrar(produtoDTO, categoriaId, subcategoriaId, cardapioId)
         categoria.adicionarProduto(produto)
 
         return categoriaRepository.save(categoria)
