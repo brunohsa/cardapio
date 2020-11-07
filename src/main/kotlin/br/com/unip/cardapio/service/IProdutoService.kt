@@ -24,5 +24,7 @@ interface IProdutoService {
 
     fun atualizarSubcategoria(id: String, subcategoria: Subcategoria)
 
+    fun buscarMaisVendidos(cardapiosIds: List<String?>): List<ProdutoDTO>
+
     fun buscarPorFiltro(cardapiosIds: List<String?>, filtro: FiltroProdutosDTO): List<ProdutoDTO>
 }

@@ -26,7 +26,7 @@ class Produto {
 
     var estoque: Int? = null
 
-    var vendidos: Long = 0
+    var vendidos: Int = 0
 
     var nota: Double? = null
 

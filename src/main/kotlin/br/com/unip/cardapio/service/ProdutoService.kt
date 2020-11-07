@@ -19,10 +19,9 @@ import org.springframework.data.mongodb.core.query.Query
 import org.springframework.stereotype.Service
 import java.io.File
 import java.io.FileInputStream
-import java.math.BigDecimal
 import java.nio.file.Files
 import java.nio.file.Paths
-import java.util.*
+import java.util.UUID
 import javax.xml.bind.DatatypeConverter
 
 @Service
@@ -41,6 +40,20 @@ class ProdutoService(val produtoRepository: IProdutoRepository,
                 subcategoriaId = null,
                 tipoOrdenacao = "DESC",
                 campoOrdenacao = "nota",
+                limite = 10)
+        return this.buscarPorFiltro(cardapiosIds, filtro)
+    }
+
+    override fun buscarMaisVendidos(cardapiosIds: List<String?>): List<ProdutoDTO> {
+        val filtro = FiltroProdutosDTO(
+                notaApartirDe = null,
+                notaMenorQue = null,
+                precoApartirDe = null,
+                precoMenorQue = null,
+                nome = null,
+                subcategoriaId = null,
+                tipoOrdenacao = "DESC",
+                campoOrdenacao = "vendidos",
                 limite = 10)
         return this.buscarPorFiltro(cardapiosIds, filtro)
     }
@@ -64,6 +77,9 @@ class ProdutoService(val produtoRepository: IProdutoRepository,
         }
         if (filtro.subcategoriaId != null) {
             criteria.and("subcategoriaId").`is`(filtro.subcategoriaId)
+        }
+        if (filtro.campoOrdenacao != null) {
+            criteria.and(filtro.campoOrdenacao).ne(null)
         }
 
         val query = Query().addCriteria(criteria)
@@ -185,5 +201,6 @@ class ProdutoService(val produtoRepository: IProdutoRepository,
                 .orElseThrow { NaoEncontradoException(PRODUTO_NAO_ENCONTRADO) }
     }
 
-    private fun Produto.toDTO() = ProdutoDTO(this.id, this.nome, this.descricao, this.valor.toString(), this.estoque, this.nota)
+    private fun Produto.toDTO() =
+            ProdutoDTO(this.id, this.nome, this.descricao, this.valor.toString(), this.estoque, this.vendidos, this.nota)
 }
