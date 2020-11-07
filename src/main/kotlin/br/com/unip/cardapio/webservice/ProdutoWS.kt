@@ -15,7 +15,13 @@ import org.springframework.core.io.InputStreamResource
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping(value = ["/v1/produtos"])
@@ -49,6 +55,16 @@ class ProdutoWS(val produtoService: IProdutoService,
     }
 
     @ApiImplicitParams(ApiImplicitParam(name = "token", value = "Token", required = true, paramType = "header"))
+    @GetMapping("/mais-vendidos")
+    @PreAuthorize("hasAuthority('$BUSCAR_PRODUTO')")
+    fun buscarProdutosMaisVendos(): ResponseEntity<List<ProdutoResponse>> {
+        val cardapiosIds = cardapioService.buscarCardapios().map { c -> c.id }
+        var dto = produtoService.buscarMaisVendidos(cardapiosIds)
+        var response = dto.map { p -> p.toResponse() }
+        return ResponseEntity.ok().body(response)
+    }
+
+    @ApiImplicitParams(ApiImplicitParam(name = "token", value = "Token", required = true, paramType = "header"))
     @GetMapping("/melhores-avaliados")
     @PreAuthorize("hasAuthority('$BUSCAR_PRODUTO')")
     fun buscarProdutosMelhoresAvaliados(): ResponseEntity<List<ProdutoResponse>> {
@@ -78,5 +94,6 @@ class ProdutoWS(val produtoService: IProdutoService,
         return ResponseEntity.ok().body(dto.map { p -> p.toResponse() })
     }
 
-    private fun ProdutoDTO.toResponse() = ProdutoResponse(this.produtoId, this.nome, this.descricao, this.valor, this.estoque, this.nota)
+    private fun ProdutoDTO.toResponse() = ProdutoResponse(this.produtoId, this.nome, this.descricao, this.valor,
+            this.estoque, this.nota, this.vendidos)
 }

@@ -8,6 +8,7 @@ class ProdutoDTO {
     var valor: String?
     var estoque: Int? = 0
     var urlImagem: String? = ""
+    var vendidos: Int? = 0
     var nota: Double? = 0.0
 
     constructor(nome: String?, descricao: String?, valor: String?, estoque: Int?) {
@@ -23,14 +24,15 @@ class ProdutoDTO {
         this.nota = nota
     }
 
-    constructor(id: String?, nome: String?, descricao: String?, valor: String?, estoque: Int?, urlImagem: String?, nota: Double?) :
-            this(id, nome, descricao, valor, estoque, nota) {
+    constructor(id: String?, nome: String?, descricao: String?, valor: String?, estoque: Int?, urlImagem: String?) :
+            this(id, nome, descricao, valor, estoque) {
         this.urlImagem = urlImagem
     }
 
-    constructor(id: String?, nome: String?, descricao: String?, valor: String?, estoque: Int?, nota: Double?) :
-            this(nome, descricao, valor, estoque) {
+    constructor(id: String?, nome: String?, descricao: String?, valor: String?, estoque: Int?, vendidos: Int?,
+                nota: Double?) : this(nome, descricao, valor, estoque) {
         this.produtoId = id
+        this.vendidos = vendidos
         this.nota = nota
     }
 }
