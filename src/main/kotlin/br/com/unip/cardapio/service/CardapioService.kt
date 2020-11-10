@@ -58,8 +58,8 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
         }
         if (cardapioDTO.ativo) {
             this.alterarOutroCardapioParaInativo()
-            cardapio.ativo = cardapioDTO.ativo
         }
+        cardapio.ativo = cardapioDTO.ativo
         cardapioRepository.save(cardapio)
     }
 
