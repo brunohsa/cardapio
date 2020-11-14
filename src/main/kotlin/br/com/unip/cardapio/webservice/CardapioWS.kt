@@ -54,6 +54,19 @@ class CardapioWS(val cardapioService: ICardapioService,
     }
 
     @ApiImplicitParams(ApiImplicitParam(name = "token", value = "Token", required = true, paramType = "header"))
+    @GetMapping(value = ["/cadastro/{cadastro_uuid}"])
+    @PreAuthorize("hasAuthority('$BUSCAR_CARDAPIO')")
+    fun buscarCardapioPorFornecedor(@PathVariable(value = "fornecedor_uuid") fornecedorUUID: String):
+            ResponseEntity<CardapioResponse?> {
+        val dto = cardapioService.buscarPorFornecedorUUID(fornecedorUUID)
+        var response: CardapioResponse? = null
+        if (dto != null) {
+            response = dto.toResponse()
+        }
+        return ResponseEntity.ok().body(response)
+    }
+
+    @ApiImplicitParams(ApiImplicitParam(name = "token", value = "Token", required = true, paramType = "header"))
     @PutMapping(value = ["/{id_cardapio}/alterar"])
     @PreAuthorize("hasAuthority('$BUSCAR_CARDAPIO')")
     fun alterarCardapio(@PathVariable(value = "id_cardapio") idCardapio: String,

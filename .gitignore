@@ -4,9 +4,11 @@
 # Log file
 *.log
 
-*/target/**
+target/
 
-/target/**
+target/*.jar
+
+target/**
 
 # Package Files #
 *.jar
@@ -24,3 +26,4 @@
 hs_err_pid*
 
 .idea/*
+.idea/*.xml
