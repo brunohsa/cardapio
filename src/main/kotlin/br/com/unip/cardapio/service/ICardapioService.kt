@@ -14,6 +14,8 @@ interface ICardapioService {
 
     fun buscar(id: String): CardapioDTO
 
+    fun buscarPorFornecedorUUID(fonecedorUUID: String): CardapioDTO?
+
     fun buscarCardapios(): List<CardapioDTO>
 
     fun buscarCardapiosPorFornecedor(fornecedoresIds: List<String>): List<Cardapio>

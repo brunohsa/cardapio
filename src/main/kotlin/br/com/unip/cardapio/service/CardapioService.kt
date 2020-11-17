@@ -1,8 +1,13 @@
 package br.com.unip.cardapio.service
 
 import br.com.unip.autenticacaolib.util.AuthenticationUtil
-import br.com.unip.cardapio.dto.*
+import br.com.unip.cardapio.dto.CardapioDTO
+import br.com.unip.cardapio.dto.CategoriaDTO
+import br.com.unip.cardapio.dto.InserirCategoriaDTO
+import br.com.unip.cardapio.dto.ProdutoDTO
+import br.com.unip.cardapio.dto.SubcategoriaDTO
 import br.com.unip.cardapio.exception.ECodigoErro.CARDAPIO_NAO_ENCONTRADO
+import br.com.unip.cardapio.exception.ECodigoErro.LIMITE_DE_CARDAPIOS_ATINGIDO
 import br.com.unip.cardapio.exception.ECodigoErro.TITULO_CARDAPIO_OBRIGATORIO
 import br.com.unip.cardapio.exception.NaoEncontradoException
 import br.com.unip.cardapio.exception.ParametroInvalidoException
@@ -27,6 +32,9 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
         val cadastroUUID = getCadastroUUID()
         if (dto.titulo.isNullOrEmpty()) {
             throw ParametroInvalidoException(TITULO_CARDAPIO_OBRIGATORIO)
+        }
+        if(cardapioRepository.countByUuidFornecedor(cadastroUUID) == 5) {
+            throw ParametroInvalidoException(LIMITE_DE_CARDAPIOS_ATINGIDO)
         }
         if (dto.ativo) {
             this.alterarOutroCardapioParaInativo()
@@ -105,6 +113,15 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
 
     override fun buscar(id: String): CardapioDTO {
         return this.buscarPorId(id).toDTO()
+    }
+
+    override fun buscarPorFornecedorUUID(fonecedorUUID: String): CardapioDTO? {
+        val cardapio = cardapioRepository.findByUuidFornecedorAndAtivo(fonecedorUUID)
+        return if (cardapio.isPresent) {
+            cardapio.get().toDTO()
+        } else {
+            null
+        }
     }
 
     override fun buscarCardapios(): List<CardapioDTO> {
