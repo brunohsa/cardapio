@@ -4,6 +4,7 @@ import br.com.unip.cardapio.dto.CardapioDTO
 import br.com.unip.cardapio.dto.CategoriaDTO
 import br.com.unip.cardapio.dto.InserirCategoriaDTO
 import br.com.unip.cardapio.dto.ProdutoDTO
+import br.com.unip.cardapio.repository.entity.Cardapio
 
 interface ICardapioService {
 
@@ -14,6 +15,8 @@ interface ICardapioService {
     fun buscar(id: String): CardapioDTO
 
     fun buscarCardapios(): List<CardapioDTO>
+
+    fun buscarCardapiosPorFornecedor(fornecedoresIds: List<String>): List<Cardapio>
 
     fun alterar(idCardapio: String, cardapioDTO: CardapioDTO)
 

@@ -11,6 +11,7 @@ import br.com.unip.cardapio.exception.NaoEncontradoException
 import br.com.unip.cardapio.repository.IProdutoRepository
 import br.com.unip.cardapio.repository.entity.Produto
 import br.com.unip.cardapio.repository.entity.Subcategoria
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.io.InputStreamResource
 import org.springframework.data.domain.Sort
 import org.springframework.data.mongodb.core.MongoTemplate
@@ -26,7 +27,8 @@ import javax.xml.bind.DatatypeConverter
 
 @Service
 class ProdutoService(val produtoRepository: IProdutoRepository,
-                     val mongoTemplate: MongoTemplate) : IProdutoService {
+                     val mongoTemplate: MongoTemplate,
+                     @Value("\${download.imagens.url}") val urlDownload: String) : IProdutoService {
 
     private val PATH_PASTA_BASE: String = "/opt/imagens"
 
@@ -201,6 +203,13 @@ class ProdutoService(val produtoRepository: IProdutoRepository,
                 .orElseThrow { NaoEncontradoException(PRODUTO_NAO_ENCONTRADO) }
     }
 
-    private fun Produto.toDTO() =
-            ProdutoDTO(this.id, this.nome, this.descricao, this.valor.toString(), this.estoque, this.vendidos, this.nota)
+    private fun montarURLDownloadImagem(produto: Produto): String? {
+        if (produto.urlImagem.isNullOrEmpty()) {
+            return ""
+        }
+        return urlDownload.format(produto.id)
+    }
+
+    private fun Produto.toDTO() = ProdutoDTO(this.id, this.nome, this.descricao, this.valor.toString(), this.estoque,
+            this.vendidos, this.nota, montarURLDownloadImagem(this), this.cardapioId)
 }

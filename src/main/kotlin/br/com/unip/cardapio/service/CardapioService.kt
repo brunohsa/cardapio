@@ -111,6 +111,10 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
         return this.buscarTodosCardapios().toDTO()
     }
 
+    override fun buscarCardapiosPorFornecedor(fornecedoresIds: List<String>): List<Cardapio> {
+        return cardapioRepository.buscarCardapiosAtivosPorFornecedoresUUID(fornecedoresIds)
+    }
+
     private fun buscarTodosCardapios(): List<Cardapio> {
         return cardapioRepository.findByUuidFornecedor(getCadastroUUID())
     }

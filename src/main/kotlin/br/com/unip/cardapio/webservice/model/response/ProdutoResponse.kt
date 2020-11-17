@@ -19,4 +19,6 @@ class ProdutoResponse(@JsonProperty(value = "id")
                       @JsonProperty(value = "vendidos")
                       var vendidos: Int? = 0,
                       @JsonProperty(value = "url")
-                      var url: String? = "")
+                      var url: String? = "",
+                      @JsonProperty(value = "cardapio_id")
+                      var cardapioId: String? = "")

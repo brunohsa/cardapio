@@ -3,6 +3,7 @@ package br.com.unip.cardapio.dto
 class ProdutoDTO {
 
     var produtoId: String? = ""
+    var cardapioId: String? = ""
     var nome: String?
     var descricao: String?
     var valor: String?
@@ -30,9 +31,11 @@ class ProdutoDTO {
     }
 
     constructor(id: String?, nome: String?, descricao: String?, valor: String?, estoque: Int?, vendidos: Int?,
-                nota: Double?) : this(nome, descricao, valor, estoque) {
+                nota: Double?, urlImagem: String?, cardapioId: String?) : this(nome, descricao, valor, estoque) {
+        this.cardapioId = cardapioId
         this.produtoId = id
         this.vendidos = vendidos
         this.nota = nota
+        this.urlImagem = urlImagem
     }
 }

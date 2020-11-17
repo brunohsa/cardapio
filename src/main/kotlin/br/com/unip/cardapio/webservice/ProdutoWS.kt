@@ -5,6 +5,7 @@ import br.com.unip.cardapio.dto.ProdutoDTO
 import br.com.unip.cardapio.security.Permissoes.ALTERAR_IMAGEM_PRODUTO
 import br.com.unip.cardapio.security.Permissoes.BUSCAR_PRODUTO
 import br.com.unip.cardapio.service.ICardapioService
+import br.com.unip.cardapio.service.ILocalizacaoService
 import br.com.unip.cardapio.service.IProdutoService
 import br.com.unip.cardapio.webservice.model.request.AlterarImagemProdutoRequest
 import br.com.unip.cardapio.webservice.model.response.ProdutoResponse
@@ -26,7 +27,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping(value = ["/v1/produtos"])
 class ProdutoWS(val produtoService: IProdutoService,
-                val cardapioService: ICardapioService) {
+                val cardapioService: ICardapioService,
+                val localizacaoService: ILocalizacaoService) {
 
     @ApiImplicitParams(ApiImplicitParam(name = "token", value = "Token", required = true, paramType = "header"))
     @PutMapping(value = ["/{id_produto}/alterar-imagem"])
@@ -48,7 +50,6 @@ class ProdutoWS(val produtoService: IProdutoService,
 
     @ApiImplicitParams(ApiImplicitParam(name = "token", value = "Token", required = true, paramType = "header"))
     @GetMapping(value = ["/{id_produto}"])
-    @PreAuthorize("hasAuthority('$BUSCAR_PRODUTO')")
     fun buscarProduto(@PathVariable(value = "id_produto") idProduto: String?): ResponseEntity<ProdutoResponse> {
         var dto = produtoService.buscar(idProduto)
         return ResponseEntity.ok().body(dto.toResponse())
@@ -94,6 +95,37 @@ class ProdutoWS(val produtoService: IProdutoService,
         return ResponseEntity.ok().body(dto.map { p -> p.toResponse() })
     }
 
+    @ApiImplicitParams(ApiImplicitParam(name = "token", value = "Token", required = true, paramType = "header"))
+    @GetMapping("latitude/{latitude}/longitude/{longitude}")
+    fun buscarPorFiltro(@ApiParam(required = false) @RequestParam(value = "nota_apartir_de") notaApartirDe: String?,
+                        @ApiParam(required = false) @RequestParam(value = "nota_menor_que") notaMenorQue: String?,
+                        @ApiParam(required = false) @RequestParam(value = "preco_apartir_de") precoApartirDe: String?,
+                        @ApiParam(required = false) @RequestParam(value = "preco_menor_que") precoMenorQue: String?,
+                        @ApiParam(required = false) @RequestParam(value = "nome") nome: String?,
+                        @ApiParam(required = false) @RequestParam(value = "subcategoria_id") subcategoriaId: String?,
+                        @ApiParam(required = false) @RequestParam(value = "tipo_ordenacao") tipoOrdenacao: String?,
+                        @ApiParam(required = false) @RequestParam(value = "campo_ordenacao") campoOrdenacao: String?,
+                        @ApiParam(required = false) @RequestParam(value = "limite") limite: Int?,
+                        @PathVariable(value = "latitude") latitude: Double,
+                        @PathVariable(value = "longitude") longitude: Double): ResponseEntity<List<ProdutoResponse>> {
+        val filtro = FiltroProdutosDTO(notaApartirDe,
+                notaMenorQue,
+                precoApartirDe,
+                precoMenorQue,
+                nome,
+                subcategoriaId,
+                tipoOrdenacao,
+                campoOrdenacao,
+                limite)
+
+        val fornecedores = localizacaoService.buscarFornecedoresUUIDPorLocalizacao(latitude, longitude)
+        val cardapios = cardapioService.buscarCardapiosPorFornecedor(fornecedores)
+        val cardapiosIds = cardapios.map { c -> c.id }
+        var dto = produtoService.buscarPorFiltro(cardapiosIds, filtro)
+
+        return ResponseEntity.ok().body(dto.map { p -> p.toResponse() })
+    }
+
     private fun ProdutoDTO.toResponse() = ProdutoResponse(this.produtoId, this.nome, this.descricao, this.valor,
-            this.estoque, this.nota, this.vendidos)
+            this.estoque, this.nota, this.vendidos, this.urlImagem, this.cardapioId)
 }
