@@ -72,7 +72,7 @@ class CardapioService(val cardapioRepository: ICardapioRepository,
     }
 
     private fun alterarOutroCardapioParaInativo() {
-        val cardapioAtivo = cardapioRepository.findByAtivo()
+        val cardapioAtivo = cardapioRepository.findByUuidFornecedorAndAtivo(getCadastroUUID())
         cardapioAtivo.ifPresent { cardapio ->
             cardapio.ativo = false
             cardapioRepository.save(cardapio)

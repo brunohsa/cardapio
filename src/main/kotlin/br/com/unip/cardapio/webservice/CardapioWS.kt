@@ -54,8 +54,7 @@ class CardapioWS(val cardapioService: ICardapioService,
     }
 
     @ApiImplicitParams(ApiImplicitParam(name = "token", value = "Token", required = true, paramType = "header"))
-    @GetMapping(value = ["/cadastro/{cadastro_uuid}"])
-    @PreAuthorize("hasAuthority('$BUSCAR_CARDAPIO')")
+    @GetMapping(value = ["/cadastro/{fornecedor_uuid}"])
     fun buscarCardapioPorFornecedor(@PathVariable(value = "fornecedor_uuid") fornecedorUUID: String):
             ResponseEntity<CardapioResponse?> {
         val dto = cardapioService.buscarPorFornecedorUUID(fornecedorUUID)
