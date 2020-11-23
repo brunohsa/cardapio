@@ -2,11 +2,7 @@ package br.com.unip.cardapio.security.filter
 
 import org.springframework.stereotype.Component
 import java.io.IOException
-import javax.servlet.Filter
-import javax.servlet.FilterChain
-import javax.servlet.ServletException
-import javax.servlet.ServletRequest
-import javax.servlet.ServletResponse
+import javax.servlet.*
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
@@ -56,8 +52,8 @@ class CorsFilterCustom : Filter {
                 "Variant-Vary, Vary, Version, Via, Viewport-Width, WWW-Authenticate, " +
                 "Want-Digest, Warning, Width, X-Content-Duration, X-Content-Security-Policy, " +
                 "X-CustomHeader, X-DNSPrefetch-Control, X-Forwarded-For, X-Forwarded-Port, " +
-                "X-Forwarded-Proto, X-Modified, X-OTHER, X-PING, X-PINGOTHER, X-Powered-By, X-Requested-With")
-        response.addHeader("Access-Control-Expose-Headers", "auth")
+                "X-Forwarded-Proto, X-Modified, X-OTHER, X-PING, X-PINGOTHER, X-Powered-By, X-Requested-With, token")
+        response.addHeader("Access-Control-Expose-Headers", "token")
 
         val request = req as HttpServletRequest
         if (request.method == "OPTIONS") {

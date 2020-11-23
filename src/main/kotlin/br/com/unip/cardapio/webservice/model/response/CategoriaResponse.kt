@@ -12,12 +12,16 @@ class CategoriaResponse {
     @JsonProperty(value = "titulo")
     var titulo: String?
 
+    @JsonProperty(value = "subcategoria")
+    var subcategoria: SubcategoriaResponse?
+
     @JsonProperty(value = "produtos")
     var produtos: List<ProdutoResponse>? = emptyList()
 
-    constructor(id: String?, titulo: String?, produtos: List<ProdutoResponse>?) {
+    constructor(id: String?, titulo: String?, subcategoria: SubcategoriaResponse?, produtos: List<ProdutoResponse>?) {
         this.id = id
         this.titulo = titulo
+        this.subcategoria = subcategoria
         this.produtos = produtos
     }
 }

@@ -8,14 +8,18 @@ class CardapioDTO {
 
     var categorias: List<CategoriaDTO>? = emptyList()
 
-    constructor(nome: String?) {
+    var ativo: Boolean = false
+
+    constructor(nome: String?, ativo: Boolean) {
         this.titulo = nome
+        this.ativo = ativo
     }
 
-    constructor(id: String?, titulo: String?, categorias: List<CategoriaDTO>?) {
+    constructor(id: String?, titulo: String?, ativo: Boolean, categorias: List<CategoriaDTO>?) {
         this.id = id
         this.titulo = titulo
         this.categorias = categorias
+        this.ativo = ativo
     }
 }
 

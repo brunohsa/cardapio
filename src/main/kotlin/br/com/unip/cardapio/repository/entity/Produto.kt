@@ -14,19 +14,33 @@ class Produto {
 
     var descricao: String? = null
 
-    var valor: BigDecimal? = null
+    var valor: Double? = null
 
     var urlImagem: String? = null
 
     var categoriaId: String? = null
 
+    var subcategoriaId: String? = null
+
+    var cardapioId: String? = null
+
+    var estoque: Int? = null
+
+    var vendidos: Int = 0
+
+    var nota: Double? = null
+
     constructor()
 
-    constructor(nome: String?, descricao: String?, valor: BigDecimal?, urlImagem: String?, categoriaId: String?) {
+    constructor(nome: String?, descricao: String?, valor: Double?, categoriaId: String?, cardapioId: String?,
+                subcategoriaId: String?, estoque: Int?) {
         this.nome = nome
         this.descricao = descricao
         this.valor = valor
         this.urlImagem = urlImagem
+        this.subcategoriaId = subcategoriaId
         this.categoriaId = categoriaId
+        this.cardapioId = cardapioId
+        this.estoque = estoque
     }
 }

@@ -4,11 +4,10 @@ import br.com.unip.cardapio.exception.CampoNumericoException
 import br.com.unip.cardapio.exception.CampoObrigatorioException
 import br.com.unip.cardapio.exception.ECodigoErro.CAMPO_VALOR_DEVE_SER_NUMERICO
 import br.com.unip.cardapio.exception.ECodigoErro.CAMPO_VALOR_OBRIGATORIO
-import java.math.BigDecimal
 
-class Valor : ICampo<BigDecimal> {
+class Valor : ICampo<Double> {
 
-    val valor: BigDecimal
+    val valor: Double
 
     constructor(valor: String?) {
         try {
@@ -20,7 +19,7 @@ class Valor : ICampo<BigDecimal> {
         }
     }
 
-    override fun get(): BigDecimal {
+    override fun get(): Double {
         return valor
     }
 }

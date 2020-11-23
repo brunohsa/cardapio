@@ -12,12 +12,16 @@ class CardapioResponse {
     @JsonProperty(value = "nome")
     val nome: String?
 
+    @JsonProperty(value = "ativo")
+    val ativo: Boolean
+
     @JsonProperty(value = "categorias")
     val categorias: List<CategoriaResponse>
 
-    constructor(id: String?, nome: String?, categorias: List<CategoriaResponse>) {
+    constructor(id: String?, nome: String?, categorias: List<CategoriaResponse>, ativo: Boolean) {
         this.id = id
         this.nome = nome
         this.categorias = categorias
+        this.ativo = ativo
     }
 }
